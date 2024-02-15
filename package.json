@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev:be": "pnpm --filter @ease-trip/backend run dev",
+    "be": "pnpm run dev:be",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
