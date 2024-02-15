@@ -1,0 +1,28 @@
+{
+  "name": "@ease-trip/common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "nodemon",
+    "typecheck": "tsc",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Augustine",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.17",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typecheck": "^0.1.2"
+  },
+  "type": "module"
+}
