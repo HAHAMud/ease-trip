@@ -7,8 +7,8 @@ config(); //setting .env
 const port = process.env.PORT || 3000;
 
 const app = express();
-const SQLite = verbose();
-const db = new SQLite.Database(process.env.DATABASE_URL!, SQLite.OPEN_READWRITE, handleSqliteError);
+const sqlite = verbose();
+const db = new sqlite.Database(process.env.DATABASE_URL!, sqlite.OPEN_READWRITE, handleSqliteError);
 
 function handleSqliteError(err: Error | null) {
   if (err instanceof Error) {
