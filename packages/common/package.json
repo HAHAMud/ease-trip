@@ -8,7 +8,8 @@
     "watch": "rollup -c -w",
     "dev": "nodemon",
     "typecheck": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "setup": "sh ./scripts/setup.sh"
   },
   "keywords": [],
   "author": "Augustine",

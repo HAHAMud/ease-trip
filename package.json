@@ -8,7 +8,7 @@
     "be": "pnpm run dev:be",
     "dev:fe": "pnpm --filter @ease-trip/frontend run dev",
     "fe": "pnpm run dev:fe",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "sh ./scripts/setup.sh"
   },
   "keywords": [],
   "author": "Augustine",
