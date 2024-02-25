@@ -20,9 +20,15 @@ importers:
       '@ease-trip/common':
         specifier: workspace:^
         version: link:../common
+      '@prisma/client':
+        specifier: 5.9.1
+        version: 5.9.1(prisma@5.9.1)
       cookie-parser:
         specifier: ~1.4.4
         version: 1.4.6
+      db:
+        specifier: link:generated/client
+        version: link:generated/client
       debug:
         specifier: ~2.6.9
         version: 2.6.9
@@ -66,6 +72,8 @@ importers:
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
+
+  packages/client: {}
 
   packages/common:
     dependencies:
@@ -1248,6 +1256,19 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@prisma/client@5.9.1(prisma@5.9.1):
+    resolution: {integrity: sha512-caSOnG4kxcSkhqC/2ShV7rEoWwd3XrftokxJqOCMVvia4NYV/TPtJlS9C2os3Igxw/Qyxumj9GBQzcStzECvtQ==}
+    engines: {node: '>=16.13'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      prisma: 5.9.1
+    dev: false
 
   /@prisma/debug@5.9.1:
     resolution: {integrity: sha512-yAHFSFCg8KVoL0oRUno3m60GAjsUKYUDkQ+9BA2X2JfVR3kRVSJFc/GpQ2fSORi4pSHZR9orfM4UC9OVXIFFTA==}

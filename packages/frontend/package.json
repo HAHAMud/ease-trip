@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup": "sh ./scripts/setup.sh"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.22.2",
