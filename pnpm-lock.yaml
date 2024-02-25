@@ -73,8 +73,6 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
-  packages/client: {}
-
   packages/common:
     dependencies:
       concurrently:
