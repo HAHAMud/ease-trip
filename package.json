@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:be": "pnpm --filter @ease-trip/backend run dev",
+    "dev:be": "pnpm --filter @ease-trip/backend run dev & pnpm --filter @ease-trip/common run watch",
     "be": "pnpm run dev:be",
-    "dev:fe": "pnpm --filter @ease-trip/frontend run dev",
+    "dev:fe": "pnpm --filter @ease-trip/frontend run dev & pnpm --filter @ease-trip/common run watch",
     "fe": "pnpm run dev:fe",
     "setup": "sh ./scripts/setup.sh"
   },
