@@ -1,0 +1,7 @@
+FROM node:20.11-alpine as application
+WORKDIR /app
+COPY . .
+RUN npm -g install pnpm@^8
+RUN pnpm install
+RUN pnpm --filter @ease-trip/common run setup
+RUN pnpm --filter @ease-trip/frontend run setup

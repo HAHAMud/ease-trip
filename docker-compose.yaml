@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/frontend/Dockerfile.dev
+    image: ease-trip-frontend:latest
+    container_name: ease-trip-frontend
+    depends_on:
+      - ease-trip-backend
+    volumes:
+      - ./packages/frontend/src:/app/packages/frontend/src
+      - ./packages/common/src:/app/packages/common/src
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    command: "pnpm dev:fe"
+
+  ease-trip-backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile.dev
+    image: ease-trip-backend:latest
+    container_name: ease-trip-backend
+    volumes:
+      - ./packages/backend/src:/app/packages/backend/src
+      - ./packages/common/src:/app/packages/common/src
+    ports:
+      - "4000:4000"
+    working_dir: /app
+    command: "pnpm dev:be"
