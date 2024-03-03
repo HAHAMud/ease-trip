@@ -5,7 +5,7 @@ import routes from './routes';
 
 config(); //setting .env
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4004;
 
 const app = express();
 

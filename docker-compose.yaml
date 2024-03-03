@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   frontend:
@@ -13,9 +13,9 @@ services:
       - ./packages/frontend/src:/app/packages/frontend/src
       - ./packages/common/src:/app/packages/common/src
     ports:
-      - "3000:3000"
+      - '4000:4000'
     working_dir: /app
-    command: "pnpm dev:fe"
+    command: 'pnpm dev:fe'
 
   ease-trip-backend:
     build:
@@ -27,6 +27,6 @@ services:
       - ./packages/backend/src:/app/packages/backend/src
       - ./packages/common/src:/app/packages/common/src
     ports:
-      - "4000:4000"
+      - '4004:4004'
     working_dir: /app
-    command: "pnpm dev:be"
+    command: 'pnpm dev:be'
