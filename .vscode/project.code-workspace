@@ -6,7 +6,7 @@
     },
     {
       "name": "backend",
-      "path": "../apps/backend",
+      "path": "../packages/backend",
     },
     {
       "name": "common",
