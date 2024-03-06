@@ -1,8 +1,8 @@
 import type { DocumentContext } from 'next/document';
-import type { DocumentHeadTagsProps } from '@mui/material-nextjs/v14-pagesRouter';
+import type { DocumentHeadTagsProps } from '@ease-trip/easy-ui/next';
 
 import { Html, Head, Main, NextScript } from 'next/document';
-import { documentGetInitialProps, DocumentHeadTags } from '@mui/material-nextjs/v14-pagesRouter';
+import { documentGetInitialProps, DocumentHeadTags } from '@ease-trip/easy-ui/next';
 
 export default function Document(props: DocumentHeadTagsProps) {
   return (

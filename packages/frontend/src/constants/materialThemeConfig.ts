@@ -1,5 +1,5 @@
-import { ThemeOptions } from '@mui/material';
-import { green, purple } from '@mui/material/colors';
+import { ThemeOptions, colors } from '@ease-trip/easy-ui';
+const { green, purple } = colors
 
 /**
  * @description theme configuration for material ui
