@@ -6,7 +6,10 @@
   "scripts": {
     "dev:be": "pnpm --filter @ease-trip/backend run dev & pnpm --filter @ease-trip/common run watch",
     "be": "pnpm run dev:be",
-    "dev:fe": "pnpm --filter @ease-trip/frontend run dev & pnpm --filter @ease-trip/common run watch",
+    "watch-common": "pnpm --filter @ease-trip/common run watch",
+    "watch-easy-ui": "pnpm --filter @ease-trip/easy-ui run watch",
+    "watch:fe": "concurrently \"npm:watch-*\"",
+    "dev:fe": "concurrently \"npm:watch:fe\" \"pnpm --filter @ease-trip/frontend run dev\"",
     "fe": "pnpm run dev:fe",
     "setup": "sh ./scripts/setup.sh"
   },
@@ -19,6 +22,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
+    "concurrently": "^8.2.2",
     "prettier": "^3.2.5"
   }
 }
