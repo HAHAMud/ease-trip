@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:be": "pnpm --filter @ease-trip/backend run dev & pnpm --filter @ease-trip/common run watch",
-    "be": "pnpm run dev:be",
     "watch-common": "pnpm --filter @ease-trip/common run watch",
     "watch-easy-ui": "pnpm --filter @ease-trip/easy-ui run watch",
-    "watch:fe": "concurrently \"npm:watch-*\"",
-    "dev:fe": "concurrently \"npm:watch:fe\" \"pnpm --filter @ease-trip/frontend run dev\"",
+    "init-be": "pnpm --filter @ease-trip/backend run dev",
+    "init-fe": "pnpm --filter @ease-trip/frontend run dev",
+    "dev:be": "concurrently \"npm:watch-common\" \"npm:init-be\"",
+    "dev:fe": "concurrently \"npm:watch-*\" \"npm:init-fe\"",
+    "be": "pnpm run dev:be",
     "fe": "pnpm run dev:fe",
     "setup": "sh ./scripts/setup.sh"
   },
