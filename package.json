@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:be": "pnpm --filter @ease-trip/backend run dev & pnpm --filter @ease-trip/common run watch",
+    "watch-common": "pnpm --filter @ease-trip/common run watch",
+    "watch-easy-ui": "pnpm --filter @ease-trip/easy-ui run watch",
+    "init-be": "pnpm --filter @ease-trip/backend run dev",
+    "init-fe": "pnpm --filter @ease-trip/frontend run dev",
+    "dev:be": "concurrently \"npm:watch-common\" \"npm:init-be\"",
+    "dev:fe": "concurrently \"npm:watch-*\" \"npm:init-fe\"",
     "be": "pnpm run dev:be",
-    "dev:fe": "pnpm --filter @ease-trip/frontend run dev & pnpm --filter @ease-trip/common run watch",
     "fe": "pnpm run dev:fe",
     "setup": "sh ./scripts/setup.sh"
   },
@@ -19,6 +23,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
+    "concurrently": "^8.2.2",
     "prettier": "^3.2.5"
   }
 }

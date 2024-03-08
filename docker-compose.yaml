@@ -12,6 +12,7 @@ services:
     volumes:
       - ./packages/frontend/src:/app/packages/frontend/src
       - ./packages/common/src:/app/packages/common/src
+      - ./packages/easy-ui/src:/app/packages/easy-ui/src
     ports:
       - '4000:4000'
     working_dir: /app
