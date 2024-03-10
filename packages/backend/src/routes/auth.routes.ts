@@ -1,18 +1,21 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import { PrismaClient } from 'db';
 import * as bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
+const router = Router();
+
+const jwtSecret = process.env.JWT_SECRET || '';
 
 function comparePassword(password: string, hash: string) {
   return bcrypt.compareSync(password, hash);
 }
 
-const router = Router();
+function generateAccessToken(val: Parameters<typeof jwt.sign>[0]) {
+  return jwt.sign(val, jwtSecret, { expiresIn: '2 days' });
+}
 
-router.get('/', (req: Request, res: Response) => {
-  res.json({ name: 'John Doe', desc: 'Hello, world!' });
-});
-
-router.post('/register', async (req: Request, res: Response) => {
+router.post('/register', async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -28,7 +31,7 @@ router.post('/register', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/login', async (req: Request, res: Response) => {
+router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -37,8 +40,11 @@ router.post('/login', async (req: Request, res: Response) => {
     const result = comparePassword(password, user?.password ?? '');
 
     if (user && result) {
+      const { id, name, email } = user;
+      const token = generateAccessToken({ id, name });
+
       res.status(200).json({
-        user: { id: user.id, name: user.name, email: user.email },
+        user: { id, name, email, token },
       });
     } else {
       res.status(400).json({ message: 'Login failed.' });
