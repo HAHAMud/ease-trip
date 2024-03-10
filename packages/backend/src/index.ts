@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { config } from 'dotenv';
+import cookieParser from 'cookie-parser';
 import routes from './routes';
+import { authToken, userAuth } from './middleware';
 
 config(); //setting .env
 
@@ -9,6 +11,7 @@ const port = process.env.PORT || 4004;
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.listen(port, () => {
   try {
@@ -23,3 +26,4 @@ app.get('/hc', (req: Request, res: Response) => {
 });
 
 app.use('/api/auth', routes.auth);
+app.use('/api/user', authToken, routes.user);
