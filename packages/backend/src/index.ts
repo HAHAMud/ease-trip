@@ -22,4 +22,4 @@ app.get('/hc', (req: Request, res: Response) => {
   res.send('ok');
 });
 
-app.use('/api/user', routes.user);
+app.use('/api/auth', routes.auth);
