@@ -58,8 +58,8 @@ export default function LoginPage() {
       <DialogContent>
         <Grid rowSpacing={2}>
           <EzFormProvider defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
-            <EzTextField name="email" />
-            <EzTextField name="password" type="password" />
+            <EzTextField fullWidth name="email" label="Email" variant="standard" margin="normal" />
+            <EzTextField fullWidth name="password" type="password" label="密碼" variant="standard" margin="normal" />
             <EzCheckbox name="rememberMe" label="keep me signed in." />
 
             <DialogActions>
