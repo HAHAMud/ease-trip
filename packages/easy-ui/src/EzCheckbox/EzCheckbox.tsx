@@ -16,7 +16,7 @@ type EzCheckBoxProps = Omit<CheckboxProps, 'name' | 'value' | 'defaultValue'> &
   Pick<FormControlLabelProps, 'label'>;
 
 export function EzCheckbox({ label, ...restProps }: EzCheckBoxProps) {
-  const { control, name, rules, defaultValue, shouldUnregister } = restProps;
+  const { control, name, rules, defaultValue, shouldUnregister, ...componentProps } = restProps;
   const controllerParams = { control, name, rules, defaultValue, shouldUnregister };
   const { fieldState } = useController(controllerParams);
 
@@ -27,7 +27,7 @@ export function EzCheckbox({ label, ...restProps }: EzCheckBoxProps) {
       {...restProps}
       render={({ field }) => (
         <StyledFormControl>
-          <FormControlLabel control={<Checkbox {...field} {...restProps} />} label={label} />
+          <FormControlLabel control={<Checkbox {...field} {...componentProps} />} label={label} />
           {helperText && <FormHelperText>{helperText}</FormHelperText>}
         </StyledFormControl>
       )}
