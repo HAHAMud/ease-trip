@@ -27,7 +27,7 @@ export function EzCheckbox({ label, ...restProps }: EzCheckBoxProps) {
       {...restProps}
       render={({ field }) => (
         <StyledFormControl>
-          <FormControlLabel control={<Checkbox {...field} />} label={label} />
+          <FormControlLabel control={<Checkbox {...field} {...restProps} />} label={label} />
           {helperText && <FormHelperText>{helperText}</FormHelperText>}
         </StyledFormControl>
       )}

@@ -12,7 +12,12 @@ export function EzTextField(props: EzTextFieldProps) {
     <Controller
       {...props}
       render={({ field }) => (
-        <TextField {...field} helperText={fieldState.error?.message} error={Boolean(fieldState.error)} />
+        <TextField
+          {...field}
+          {...props}
+          helperText={fieldState.error?.message ?? ''}
+          error={Boolean(fieldState.error)}
+        />
       )}
     />
   );
