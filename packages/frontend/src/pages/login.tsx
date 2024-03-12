@@ -6,7 +6,7 @@ import {
   DialogActions,
   DialogTitle,
   Grid,
-  EzFormProvider,
+  EzForm,
   EzTextField,
   EzCheckbox,
 } from '@ease-trip/easy-ui';
@@ -57,7 +57,7 @@ export default function LoginPage() {
       <DialogTitle>Ease Trip</DialogTitle>
       <DialogContent>
         <Grid rowSpacing={2}>
-          <EzFormProvider defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
+          <EzForm defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
             <EzTextField fullWidth name="email" label="Email" />
             <EzTextField fullWidth name="password" type="password" label="密碼" />
             <EzCheckbox name="rememberMe" label="keep me signed in." />
@@ -67,7 +67,7 @@ export default function LoginPage() {
                 Sign In
               </Button>
             </DialogActions>
-          </EzFormProvider>
+          </EzForm>
         </Grid>
       </DialogContent>
     </Dialog>
