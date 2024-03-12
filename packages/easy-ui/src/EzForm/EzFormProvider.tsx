@@ -25,7 +25,7 @@ const errorWrapper =
     return Promise.resolve(fn(...params)).catch(() => {});
   };
 
-export function EzFormProvider({ children, onSubmit, onError, schema, ...restUseFormProps }: EzFormProviderProps) {
+export function EzForm({ children, onSubmit, onError, schema, ...restUseFormProps }: EzFormProviderProps) {
   const methods = useForm({ ...restUseFormProps, ...(schema && { resolver: zodResolver(schema) }) });
 
   return (
