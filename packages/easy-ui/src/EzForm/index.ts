@@ -1,1 +1,1 @@
-export * from './EzFormProvider';
+export * from './EzForm';
