@@ -1,0 +1,25 @@
+# This job checks that pull requests
+# * start with EE-#####
+# * github truncates title msgs over 70 characters
+name: 'PR Title Check'
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  pr-title-check-job:
+    name: PR Title Check
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ensure title is EE-<digits> <space> and <=120 chars
+        uses: deepakputhraya/action-pr-title@v1.0.2
+        with:
+          regex: '^EE-\d\d\d+:? .*'
+          max_length: 120
+          github_token: '${{ secrets.GITHUB_TOKEN }}'
