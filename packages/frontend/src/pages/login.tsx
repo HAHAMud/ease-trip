@@ -1,26 +1,37 @@
-import type { ChangeEvent as ReactChangeEvent } from 'react';
-
-import { useState } from 'react';
 import { useRouter } from 'next/router';
-
 import {
   Button,
-  Checkbox,
   Dialog,
   DialogContent,
   DialogActions,
   DialogTitle,
-  FormControlLabel,
   Grid,
-  TextField,
+  EzFormProvider,
+  EzTextField,
+  EzCheckbox,
 } from '@ease-trip/easy-ui';
+import { z } from 'zod';
+
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+  rememberMe: z.boolean(),
+});
+
+type LoginForm = z.infer<typeof loginSchema>;
+
+const defaultValues: LoginForm = {
+  email: '',
+  password: '',
+  rememberMe: false,
+};
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
 
-  async function handleSubmit() {
+  async function handleSubmit(data: LoginForm) {
+    const { email, password } = data;
+
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -46,35 +57,17 @@ export default function LoginPage() {
       <DialogTitle>Ease Trip</DialogTitle>
       <DialogContent>
         <Grid rowSpacing={2}>
-          <TextField
-            fullWidth
-            required
-            id="standard-basic"
-            label="Email"
-            variant="standard"
-            margin="normal"
-            value={email}
-            onChange={(event: ReactChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
-          />
+          <EzFormProvider defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
+            <EzTextField name="email" />
+            <EzTextField name="password" type="password" />
+            <EzCheckbox name="rememberMe" label="keep me signed in." />
 
-          <TextField
-            fullWidth
-            required
-            id="standard-basic"
-            label="密碼"
-            variant="standard"
-            margin="normal"
-            value={password}
-            onChange={(event: ReactChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
-          />
-
-          <FormControlLabel control={<Checkbox />} label="keep me signed in." />
-
-          <DialogActions>
-            <Button variant="contained" onClick={handleSubmit}>
-              Sign In
-            </Button>
-          </DialogActions>
+            <DialogActions>
+              <Button variant="contained" type="submit">
+                Sign In
+              </Button>
+            </DialogActions>
+          </EzFormProvider>
         </Grid>
       </DialogContent>
     </Dialog>
