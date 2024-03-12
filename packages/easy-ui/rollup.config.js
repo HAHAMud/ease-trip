@@ -16,7 +16,7 @@ const external = [
   '@mui/material-nextjs/v14-pagesRouter',
   ...Object.keys(pkg?.peerDependencies || {}),
   ...Object.keys(pkg?.dependencies || {}),
-]
+];
 
 /**
  * @type {import('rollup').RollupOptions[]}
@@ -47,7 +47,7 @@ module.exports = [
       alias({
         entries: [
           {
-            find: /^@/,
+            find: /^@\//,
             replacement: path.join(rootPath, 'src'),
           },
         ],
@@ -75,4 +75,4 @@ module.exports = [
     external,
     plugins: [dts()],
   },
-]
+];
