@@ -20,6 +20,6 @@ jobs:
       - name: Ensure title is EE-<digits> <space> and <=120 chars
         uses: deepakputhraya/action-pr-title@v1.0.2
         with:
-          regex: '^EE-\d\d\d+:? .*'
+          regex: '^EE-\d\d+:? .*'
           max_length: 120
           github_token: '${{ secrets.GITHUB_TOKEN }}'

@@ -12,6 +12,7 @@
     "dev:fe": "concurrently \"npm:watch-*\" \"npm:init-fe\"",
     "be": "pnpm run dev:be",
     "fe": "pnpm run dev:fe",
+    "storybook": "pnpm --filter @ease-trip/easy-ui run storybook",
     "setup": "sh ./scripts/setup.sh"
   },
   "keywords": [],
