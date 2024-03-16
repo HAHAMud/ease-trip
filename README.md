@@ -21,31 +21,31 @@ If you are using VSCode (strongly recommend), you need to install the following 
 ### Using `pnpm` to install packages
 
 ```sh
-pnpm run setup
+pnpm setup
 ```
 
 ### Start Backend
 
 ```sh
-pnpm run dev:be
+pnpm dev:be
 ```
 
 or
 
 ```sh
-pnpm run be
+pnpm be
 ```
 
 ### Start Frontend
 
 ```sh
-pnpm run dev:fe
+pnpm dev:fe
 ```
 
 or
 
 ```sh
-pnpm run fe
+pnpm fe
 ```
 
 ### Start Docker
@@ -58,6 +58,11 @@ If you want to reinstall by node_modules:
 
 ```sh
 docker-compose up --build
+```
+
+### Storybook
+```sh
+pnpm storybook
 ```
 
 ### Test account
