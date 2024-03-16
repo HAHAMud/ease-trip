@@ -1,3 +1,5 @@
 import HomePage from "@/modules/Home/views/Home";
 
-export default <HomePage />
+export default function Home() {
+    return <HomePage />;
+}
