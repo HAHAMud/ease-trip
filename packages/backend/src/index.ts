@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import { config } from 'dotenv';
 import cookieParser from 'cookie-parser';
 import routes from './routes';
-import { authToken, userAuth } from './middleware';
+import { authToken } from './middleware';
 
 config(); //setting .env
 
