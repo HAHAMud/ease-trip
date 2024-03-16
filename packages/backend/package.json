@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "db:pull": "prisma db pull",
     "build": "tsc -p tsconfig.json",
     "start": "node -q dist/index.js",
-    "dev": "concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
+    "dev": "concurrently \"npm:db:pull\" \"tsc --watch\" \"nodemon -q dist/index.js\"",
     "test": "jest",
     "setup": "sh ./scripts/setup.sh"
   },
