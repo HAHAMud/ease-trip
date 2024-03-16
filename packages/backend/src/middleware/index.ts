@@ -1,1 +1,1 @@
-export { authToken } from './userAuth';
+export { authToken } from './authToken';
