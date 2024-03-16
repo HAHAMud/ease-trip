@@ -59,3 +59,9 @@ If you want to reinstall by node_modules:
 ```sh
 docker-compose up --build
 ```
+
+### Test account
+```
+abc@abc.com
+abc123!
+```
