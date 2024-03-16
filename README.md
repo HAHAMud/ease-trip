@@ -21,6 +21,7 @@ If you are using VSCode (strongly recommend), you need to install the following 
 ### Using `pnpm` to install packages
 
 ```sh
+pnpm i
 pnpm setup
 ```
 
@@ -28,11 +29,7 @@ pnpm setup
 
 ```sh
 pnpm dev:be
-```
-
-or
-
-```sh
+# or
 pnpm be
 ```
 
@@ -40,11 +37,7 @@ pnpm be
 
 ```sh
 pnpm dev:fe
-```
-
-or
-
-```sh
+# or
 pnpm fe
 ```
 
