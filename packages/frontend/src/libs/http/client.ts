@@ -4,16 +4,16 @@ const apiServer = process.env.NEXT_PUBLIC_SERVER_API ?? '';
 /**
  * Create AxiosInstance with response interceptor that creates instances of ApiError.
  */
-export const createApiClient = (config: AxiosRequestConfig) => {
+export const createClient = (config: AxiosRequestConfig) => {
   const { baseURL, ...rest } = config;
   const url = `${apiServer}${baseURL}`;
 
-  const apiClient = axios.create({
+  const client = axios.create({
     baseURL: url,
     ...rest,
   });
 
-  apiClient.interceptors.response.use(
+  client.interceptors.response.use(
     (response) => response,
     (error) => {
       if (!axios.isAxiosError(error)) {
@@ -32,7 +32,7 @@ export const createApiClient = (config: AxiosRequestConfig) => {
     },
   );
 
-  return apiClient;
+  return client;
 };
 
 export const createQueryKey = <T extends { [K in keyof T]: K }>(obj: T) => obj;

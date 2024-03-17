@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { createApiClient } from '../apiBase';
+import { createClient } from '../../libs/http/client';
 
 const UserSchema = z.object({
   name: z.string(),
@@ -10,7 +10,7 @@ export enum QueryKey {
  GET_USER  = 'getUser',
 }
 
-const client = createApiClient({
+const client = createClient({
   baseURL: '/api/user',
 });
 
