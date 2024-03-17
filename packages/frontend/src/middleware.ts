@@ -4,11 +4,11 @@ import { headers } from 'next/headers';
 
 // This function can be marked `async` if using `await` inside
 
-const GUARD_ROUTES = ['/planning'];
+const guardRoutes = ['/planning'];
 
 export function middleware(request: NextRequest) {
   const authorization = headers().get('Authorization');
-  const isMatchRoute = GUARD_ROUTES.some((path) => request.nextUrl.pathname.match(path));
+  const isMatchRoute = guardRoutes.some((path) => request.nextUrl.pathname.match(path));
 
   if (isMatchRoute && authorization) {
     return NextResponse.next();
