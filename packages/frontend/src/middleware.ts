@@ -4,20 +4,21 @@ import { headers } from 'next/headers';
 
 // This function can be marked `async` if using `await` inside
 
-const GUIDE_ROUTES = ['/planning'];
+const GUARD_ROUTES = ['/planning'];
 
 export function middleware(request: NextRequest) {
   const authorization = headers().get('Authorization');
+  const isMatchRoute = GUARD_ROUTES.some((path) => request.nextUrl.pathname.match(path));
 
-  if (GUIDE_ROUTES.some((path) => request.nextUrl.pathname.match(path)) && authorization) {
+  if (isMatchRoute && authorization) {
     return NextResponse.next();
   }
 
-  if (request.nextUrl.pathname === '/') {
-    return NextResponse.next();
+  if (isMatchRoute && authorization === null) {
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  return NextResponse.rewrite(new URL('/login', request.url));
+  return NextResponse.next();
 }
 
 export const config = {
