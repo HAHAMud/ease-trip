@@ -11,7 +11,7 @@ export type EzIconName = keyof typeof iconMapping;
 
 export const getEzIcon = (name: EzIconName) => {
   if (!iconMapping[name]) console.warn(`No icon name mapping for: ${name}`);
-  const Ikon: typeof SvgIcon = iconMapping[name];
+  const Ikon: typeof SvgIcon = iconMapping[name] || null;
   return Ikon;
 };
 
