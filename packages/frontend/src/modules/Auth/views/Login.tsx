@@ -1,3 +1,4 @@
+import { MouseEvent as ReactMouseEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   Button,
@@ -9,19 +10,19 @@ import {
   EzForm,
   EzTextField,
   EzCheckbox,
+  EzIcon,
   IconButton,
 } from '@ease-trip/easy-ui';
-import { Visibility, VisibilityOff } from '@ease-trip/easy-ui/icon';
+// import { Visibility, VisibilityOff } from '@ease-trip/easy-ui/icon';
 import { defaultValues, loginSchema } from '../models';
 import type { LoginForm } from '../models';
-import { useState } from 'react';
 
 export default function LoginPage() {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (event: ReactMouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
 
@@ -66,7 +67,7 @@ export default function LoginPage() {
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  <EzIcon name={showPassword ? 'VisibilityOff' : 'Visibility'} />
                 </IconButton>
               }
             />
