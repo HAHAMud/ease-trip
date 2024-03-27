@@ -12,6 +12,11 @@
       "import": "./dist/es/next.js",
       "require": "./dist/lib/next.js",
       "types": "./dist/types/next.d.ts"
+    },
+    "./icon": {
+      "import": "./dist/es/icon.js",
+      "require": "./dist/lib/icon.js",
+      "types": "./dist/types/icon.d.ts"
     }
   },
   "scripts": {
