@@ -26,7 +26,7 @@ module.exports = [
     input: {
       index: './src/index.ts',
       next: './src/next.ts',
-      icon: './src/icon.ts',
+      // icon: './src/icon.ts',
     },
     output: [
       {
@@ -68,7 +68,7 @@ module.exports = [
     input: {
       index: './src/index.ts',
       next: './src/next.ts',
-      icon: './src/icon.ts',
+      // icon: './src/icon.ts',
     },
     output: {
       dir: 'dist/types',
