@@ -1,3 +1,6 @@
+import { MouseEvent as ReactMouseEvent, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useMutation } from '@tanstack/react-query';
 import {
   Button,
   Dialog,
@@ -10,12 +13,8 @@ import {
   EzCheckbox,
   EzIconButton,
 } from '@ease-trip/easy-ui';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
-import { MouseEvent as ReactMouseEvent, useState } from 'react';
 import { login } from '@/api/auth';
-import { defaultValues, loginSchema } from '../models';
-import type { LoginForm } from '../models';
+import { defaultValues, LoginForm, loginSchema } from '../models';
 
 export default function LoginPage() {
   const router = useRouter();
