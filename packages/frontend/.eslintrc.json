@@ -12,11 +12,28 @@
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "alphabetize": { "order": "asc", "caseInsensitive": true },
         "distinctGroup": false,
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "never",
         "pathGroups": [
           {
             "pattern": "react",
             "group": "external",
             "position": "before"
+          },
+          {
+            "pattern": "next/**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@ease-trip/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal",
+            "position": "after"
           }
         ]
       }
