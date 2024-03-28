@@ -10,10 +10,8 @@ import {
   EzForm,
   EzTextField,
   EzCheckbox,
-  EzIcon,
-  IconButton,
+  EzIconButton,
 } from '@ease-trip/easy-ui';
-// import { Visibility, VisibilityOff } from '@ease-trip/easy-ui/icon';
 import { defaultValues, loginSchema } from '../models';
 import type { LoginForm } from '../models';
 
@@ -62,13 +60,12 @@ export default function LoginPage() {
               label="Password"
               type={showPassword ? 'text' : 'password'}
               endAdornment={
-                <IconButton
+                <EzIconButton
+                  name={showPassword ? 'VisibilityOff' : 'Visibility'}
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
-                >
-                  <EzIcon name={showPassword ? 'VisibilityOff' : 'Visibility'} />
-                </IconButton>
+                />
               }
             />
 
