@@ -14,9 +14,19 @@ import {
 } from '@ease-trip/easy-ui';
 import { defaultValues, loginSchema } from '../models';
 import type { LoginForm } from '../models';
+import { useMutation } from '@tanstack/react-query';
+import { login } from '@/api/auth';
 
 export default function LoginPage() {
   const router = useRouter();
+
+  const mutation = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      console.log('🚀 ~ LoginPage ~ data:', data);
+      router.push('/plan');
+    },
+  });
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -25,26 +35,7 @@ export default function LoginPage() {
   };
 
   async function handleSubmit(data: LoginForm) {
-    const { email, password } = data;
-
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const payload = await response.json();
-      if (response.ok) {
-        router.push('/plan');
-      } else {
-        // Handle errors
-        throw Error(payload);
-      }
-    } catch (err) {
-      if (err instanceof Error) {
-      }
-    }
+    return mutation.mutateAsync(data);
   }
 
   return (

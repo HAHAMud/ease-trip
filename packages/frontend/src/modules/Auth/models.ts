@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const loginSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z.string(),
   rememberMe: z.boolean(),
 });
 
@@ -12,6 +12,4 @@ export const defaultValues = {
   email: '',
   password: '',
   rememberMe: false,
-} satisfies LoginForm
-  
-  
+} satisfies LoginForm;
