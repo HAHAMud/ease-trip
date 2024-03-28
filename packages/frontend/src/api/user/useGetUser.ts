@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { QueryKey, getUser } from './user';
+import { getUser } from './user';
+import { QueryKey } from '..';
 
 export const useGetUser = () => {
-  return useQuery({ queryKey: [QueryKey.GET_USER], queryFn: getUser });
+  return useQuery({ queryKey: [QueryKey.GetUser], queryFn: getUser });
 };
