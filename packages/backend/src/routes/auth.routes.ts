@@ -43,9 +43,7 @@ router.post('/login', async (req, res) => {
       const { id, name, email } = user;
       const token = generateAccessToken({ id, name });
 
-      res.status(200).json({
-        user: { id, name, email, token },
-      });
+      res.status(200).json({ id, name, email, token });
     } else {
       res.status(400).json({ message: 'Login failed.' });
     }
