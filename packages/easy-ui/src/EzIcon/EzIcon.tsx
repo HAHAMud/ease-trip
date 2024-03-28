@@ -1,10 +1,11 @@
 import { SvgIcon, SvgIconProps } from '@mui/material';
 
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export const iconMapping = {
-  Visibility: Visibility,
-  VisibilityOff: VisibilityOff,
+  Visibility: VisibilityIcon,
+  VisibilityOff: VisibilityOffIcon,
 } as const;
 
 export type EzIconName = keyof typeof iconMapping;
