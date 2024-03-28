@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={{ [THEME_ID]: materialTheme }}>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </ThemeProvider>
     </QueryClientProvider>
   );
