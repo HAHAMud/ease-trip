@@ -2,7 +2,6 @@ import { MouseEvent as ReactMouseEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogActions,
@@ -12,6 +11,7 @@ import {
   EzTextField,
   EzCheckbox,
   EzIconButton,
+  EzContainedButton,
 } from '@ease-trip/easy-ui';
 import { login } from '@/api/auth';
 import { defaultValues, LoginForm, loginSchema } from '../models';
@@ -23,19 +23,21 @@ export default function LoginPage() {
     mutationFn: login,
     onSuccess: (data) => {
       console.log('🚀 ~ LoginPage ~ data:', data);
-      router.push('/plan');
+      // router.push('/plan');
     },
   });
 
   const [showPassword, setShowPassword] = useState(false);
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   const handleMouseDownPassword = (event: ReactMouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
 
-  async function handleSubmit(data: LoginForm) {
+  const handleSubmit = async (data: LoginForm) => {
     return mutation.mutateAsync(data);
-  }
+  };
 
   return (
     <Dialog open>
@@ -62,9 +64,9 @@ export default function LoginPage() {
             <EzCheckbox name="rememberMe" label="keep me signed in." />
 
             <DialogActions>
-              <Button variant="contained" type="submit">
+              <EzContainedButton variant="contained" type="submit">
                 Sign In
-              </Button>
+              </EzContainedButton>
             </DialogActions>
           </EzForm>
         </Grid>
