@@ -1,4 +1,5 @@
 {
+  "plugins": ["import"],
   "extends": ["next/core-web-vitals", "plugin:import/recommended", "plugin:import/typescript"],
   "rules": {
     "import/no-anonymous-default-export": "off",
