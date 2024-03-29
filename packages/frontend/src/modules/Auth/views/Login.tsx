@@ -47,6 +47,10 @@ export default function LoginPage() {
     });
   };
 
+  const handleTitleClick = () => {
+    router.push('/login');
+  }
+
   return (
     <Fragment>
       <Dialog open>
