@@ -19,6 +19,7 @@ import {
 
 import { login } from '@/api/auth';
 import { defaultValues, LoginForm, loginSchema } from '../models';
+import { LOGO_NAME } from '@/constants';
 
 export default function LoginPage() {
   const router = useRouter();
