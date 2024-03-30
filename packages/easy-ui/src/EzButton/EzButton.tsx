@@ -1,23 +1,41 @@
 import styled from '@emotion/styled';
-import { Button, ButtonProps } from '@mui/material';
-import { VariantComponent } from '../utils/utilityType';
+import { Button, ButtonProps, CircularProgress } from '@mui/material';
+import { useFormContext } from 'react-hook-form';
+import { variantComponentFactory, VariantComponentProps } from '../utils/utilityType';
 
 export type EzButtonProps = ButtonProps;
 
 const StyledButton = styled(Button)<EzButtonProps>({});
 
 export function EzButton(props: EzButtonProps) {
-  return <StyledButton {...props} />;
+  const context = useFormContext();
+
+  const isLoading = context?.formState.isSubmitting;
+
+  return (
+    <StyledButton
+      {...props}
+      {...(isLoading
+        ? {
+            startIcon: <CircularProgress sx={{ mr: 1 }} size={14} />,
+            disabled: true,
+          }
+        : null)}
+    />
+  );
 }
 
-export function EzContainedButton(props: VariantComponent<EzButtonProps>) {
-  return <StyledButton variant="contained" {...props} />;
-}
+export type EzContainedButtonProps = VariantComponentProps<EzButtonProps>;
+export const EzContainedButton = variantComponentFactory(EzButton, {
+  variant: 'contained',
+});
 
-export function EzOutlinedButton(props: VariantComponent<EzButtonProps>) {
-  return <StyledButton variant="outlined" {...props} />;
-}
+export type EzOutlinedButtonProps = VariantComponentProps<EzButtonProps>;
+export const EzOutlinedButton = variantComponentFactory(EzButton, {
+  variant: 'outlined',
+});
 
-export function EzTextButton(props: VariantComponent<EzButtonProps>) {
-  return <StyledButton variant="text" {...props} />;
-}
+export type EzTextButtonProps = VariantComponentProps<EzButtonProps>;
+export const EzTextButton = variantComponentFactory(EzButton, {
+  variant: 'text',
+});
