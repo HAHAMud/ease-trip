@@ -6,3 +6,4 @@ export * from './EzButton';
 export * from './EzCheckbox';
 export * from './EzIcon';
 export * from './EzTextField';
+export * from './toast';

@@ -1,7 +1,7 @@
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { InputAdornment, TextField, TextFieldProps } from '@mui/material';
-import { ReactNode } from 'react';
-import { Controller, UseControllerProps, useController } from 'react-hook-form';
+import { Controller, UseControllerProps, useController, useFormContext } from 'react-hook-form';
 
 type EzTextFieldProps = Omit<TextFieldProps, 'name' | 'value' | 'defaultValue'> &
   UseControllerProps & {
@@ -22,6 +22,8 @@ export function EzTextField(props: EzTextFieldProps) {
 
   const { variant = 'standard', margin = 'normal' } = componentProps;
 
+  const context = useFormContext();
+
   return (
     <Controller
       {...props}
@@ -29,6 +31,7 @@ export function EzTextField(props: EzTextFieldProps) {
         <StyledTextField
           {...field}
           {...componentProps}
+          disabled={context?.formState.isSubmitting}
           margin={margin}
           variant={variant}
           helperText={fieldState.error?.message ?? ''}

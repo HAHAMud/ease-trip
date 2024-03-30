@@ -1,7 +1,16 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider, THEME_ID, createTheme } from '@ease-trip/easy-ui';
+import {
+  ThemeProvider,
+  THEME_ID,
+  createTheme,
+  EzToastProvider,
+  EzSuccessToast,
+  EzInfoToast,
+  EzErrorToast,
+  EzWarningToast,
+} from '@ease-trip/easy-ui';
 import { materialThemeConfig } from '@/constants';
 
 const materialTheme = createTheme(materialThemeConfig);
@@ -45,7 +54,18 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={{ [THEME_ID]: materialTheme }}>
-        <Component {...pageProps} />
+        <EzToastProvider
+          Components={{
+            success: EzSuccessToast,
+            info: EzInfoToast,
+            error: EzErrorToast,
+            warning: EzWarningToast,
+          }}
+          preventDuplicate
+          autoHideDuration={5000}
+        >
+          <Component {...pageProps} />
+        </EzToastProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

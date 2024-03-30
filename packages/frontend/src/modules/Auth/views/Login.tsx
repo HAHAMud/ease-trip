@@ -2,20 +2,18 @@ import { MouseEvent as ReactMouseEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import {
-  Alert,
   Dialog,
   DialogContent,
   DialogActions,
   DialogTitle,
   Grid,
-  Snackbar,
-  Slide,
   EzForm,
   EzTextField,
   EzCheckbox,
   EzIconButton,
   EzButton,
   EzContainedButton,
+  useToast,
 } from '@ease-trip/easy-ui';
 import { login } from '@/api/auth';
 import { LOGO_NAME } from '@/constants';
@@ -27,13 +25,16 @@ type Props = {
 
 export default function LoginPage({ open = true }: Props) {
   const router = useRouter();
+  const toast = useToast();
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
       console.log('🚀 ~ LoginPage ~ data:', data);
       // router.push('/plan');
     },
-    onError: (error: any) => error,
+    onError: (error: any) => {
+      toast.error(error.response.data.message);
+    },
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -85,17 +86,6 @@ export default function LoginPage({ open = true }: Props) {
           </Grid>
         </DialogContent>
       </Dialog>
-
-      <Snackbar
-        open={mutation.isError}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        autoHideDuration={5000}
-        TransitionComponent={(props) => <Slide {...props} direction="up" />}
-      >
-        <Alert severity="error" sx={{ width: '100%' }}>
-          {mutation.error?.response.data.message}
-        </Alert>
-      </Snackbar>
     </>
   );
 }
