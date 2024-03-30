@@ -1,4 +1,4 @@
-import { Fragment, MouseEvent as ReactMouseEvent, useState } from 'react';
+import { MouseEvent as ReactMouseEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import {
@@ -17,20 +17,23 @@ import {
   EzButton,
   EzContainedButton,
 } from '@ease-trip/easy-ui';
-
 import { login } from '@/api/auth';
-import { defaultValues, LoginForm, loginSchema } from '../models';
 import { LOGO_NAME } from '@/constants';
+import { defaultValues, LoginForm, loginSchema } from '../models';
 
-export default function LoginPage() {
+type Props = {
+  open?: boolean;
+};
+
+export default function LoginPage({ open = true }: Props) {
   const router = useRouter();
-  const [hasError, setHasError] = useState<boolean>(false);
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
       console.log('🚀 ~ LoginPage ~ data:', data);
       // router.push('/plan');
     },
+    onError: (error: any) => error,
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -42,34 +45,22 @@ export default function LoginPage() {
   };
 
   const handleSubmit = (data: LoginForm) => {
-    setHasError(false);
-    mutation.mutateAsync(data).catch(() => {
-      setHasError(true);
-    });
+    return mutation.mutateAsync(data);
   };
 
   const handleTitleClick = () => {
     router.push('/login');
-  }
+  };
 
   return (
-    <Fragment>
-      <Dialog open>
+    <>
+      <Dialog open={open}>
         <DialogTitle>
-          <EzButton onClick={handleTitleClick}>
-            {LOGO_NAME}
-          </EzButton>
+          <EzButton onClick={handleTitleClick}>{LOGO_NAME}</EzButton>
         </DialogTitle>
         <DialogContent>
           <Grid rowSpacing={2}>
-            <EzForm
-              defaultValues={defaultValues}
-              schema={loginSchema}
-              onSubmit={handleSubmit}
-              onError={() => {
-                console.log('EzForm on form empty');
-              }}
-            >
+            <EzForm defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
               <EzTextField fullWidth name="email" label="Email" />
               <EzTextField
                 fullWidth
@@ -94,16 +85,17 @@ export default function LoginPage() {
           </Grid>
         </DialogContent>
       </Dialog>
+
       <Snackbar
-        open={hasError}
+        open={mutation.isError}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={5000}
         TransitionComponent={(props) => <Slide {...props} direction="up" />}
       >
         <Alert severity="error" sx={{ width: '100%' }}>
-          login failure
+          {mutation.error?.response.data.message}
         </Alert>
       </Snackbar>
-    </Fragment>
+    </>
   );
 }
