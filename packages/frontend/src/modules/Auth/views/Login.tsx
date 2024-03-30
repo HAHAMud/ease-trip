@@ -25,6 +25,9 @@ export default function LoginPage() {
       console.log('🚀 ~ LoginPage ~ data:', data);
       // router.push('/plan');
     },
+    onError(error, variables, context) {
+      console.log('onError', error);
+    },
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -35,8 +38,8 @@ export default function LoginPage() {
     event.preventDefault();
   };
 
-  const handleSubmit = async (data: LoginForm) => {
-    return mutation.mutateAsync(data);
+  const handleSubmit = (data: LoginForm) => {
+    mutation.mutateAsync(data);
   };
 
   return (
@@ -44,10 +47,18 @@ export default function LoginPage() {
       <DialogTitle>Ease Trip</DialogTitle>
       <DialogContent>
         <Grid rowSpacing={2}>
-          <EzForm defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
+          <EzForm
+            defaultValues={defaultValues}
+            schema={loginSchema}
+            onSubmit={handleSubmit}
+            onError={() => {
+              console.log('EzForm on form empty');
+            }}
+          >
             <EzTextField fullWidth name="email" label="Email" />
             <EzTextField
               fullWidth
+              required
               name="password"
               label="Password"
               type={showPassword ? 'text' : 'password'}
@@ -60,13 +71,9 @@ export default function LoginPage() {
                 />
               }
             />
-
             <EzCheckbox name="rememberMe" label="keep me signed in." />
-
             <DialogActions>
-              <EzContainedButton variant="contained" type="submit">
-                Sign In
-              </EzContainedButton>
+              <EzContainedButton type="submit">Sign In</EzContainedButton>
             </DialogActions>
           </EzForm>
         </Grid>
