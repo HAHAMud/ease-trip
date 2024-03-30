@@ -8,6 +8,15 @@ export const setStorageItem = (key: string, value: object | string) => {
   }
 }
 
+
 export const getStorageItem = (key: string) => {
-  return localStorage.getItem(key);
+  try {
+    const item = localStorage.getItem(key);
+    if (!item) {
+      return null;
+    }
+    return JSON.parse(item);
+  } catch (error) {
+    console.error("Error getting item from localStorage:", error);
+  }
 }
