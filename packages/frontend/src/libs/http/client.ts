@@ -18,7 +18,8 @@ export const createClient = (config: AxiosRequestConfig) => {
   client.interceptors.request.use((request) => {
     const token = getStorageItem('ez-token');
 
-    if (token) {
+    // Add token to request headers, avoiding empty token
+    if (token && !!token.trim()) {
       request.headers.Authorization = `Bearer ${token}`;
     }
 
