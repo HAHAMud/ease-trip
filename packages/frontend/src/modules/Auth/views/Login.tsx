@@ -18,6 +18,7 @@ import {
 import { login } from '@/api/auth';
 import { LOGO_NAME } from '@/constants';
 import { defaultValues, LoginForm, loginSchema } from '../models';
+import { setStorageItem } from '@/utils';
 
 type Props = {
   open?: boolean;
@@ -30,7 +31,7 @@ export default function LoginPage({ open = true }: Props) {
     mutationFn: login,
     onSuccess: (data) => {
       console.log('🚀 ~ LoginPage ~ data:', data);
-      localStorage.setItem('ez-token', data.token);
+      setStorageItem('ez-token', data.token);
     },
     onError: (error: any) => {
       toast.error(error.response.data.message);

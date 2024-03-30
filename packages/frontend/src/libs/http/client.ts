@@ -1,4 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { getStorageItem } from '@/utils';
+
 const apiServer = process.env.NEXT_PUBLIC_SERVER_API ?? '';
 
 /**
@@ -14,7 +16,8 @@ export const createClient = (config: AxiosRequestConfig) => {
   });
 
   client.interceptors.request.use((request) => {
-    const token = localStorage.getItem('ez-token');
+    const token = getStorageItem('ez-token');
+
     if (token) {
       request.headers.Authorization = `Bearer ${token}`;
     }
