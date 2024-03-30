@@ -65,7 +65,6 @@ export default function LoginPage({ open = true }: Props) {
               <EzTextField fullWidth name="email" label="Email" />
               <EzTextField
                 fullWidth
-                required
                 name="password"
                 label="Password"
                 type={showPassword ? 'text' : 'password'}
