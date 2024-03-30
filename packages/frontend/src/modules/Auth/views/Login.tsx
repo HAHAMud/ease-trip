@@ -30,7 +30,7 @@ export default function LoginPage({ open = true }: Props) {
     mutationFn: login,
     onSuccess: (data) => {
       console.log('🚀 ~ LoginPage ~ data:', data);
-      localStorage.setItem('token', JSON.stringify(data.token));
+      localStorage.setItem('token', data.token);
     },
     onError: (error: any) => {
       toast.error(error.response.data.message);
