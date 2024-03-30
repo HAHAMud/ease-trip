@@ -13,6 +13,16 @@ export const createClient = (config: AxiosRequestConfig) => {
     ...rest,
   });
 
+  client.interceptors.request.use((request) => {
+    const token = localStorage.getItem('ez-token');
+    if (token) {
+      request.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return request;
+  }
+  );
+
   client.interceptors.response.use(
     (response) => response,
     (error) => {
@@ -26,7 +36,7 @@ export const createClient = (config: AxiosRequestConfig) => {
 
       try {
         return Promise.reject(error);
-      } catch (err) {}
+      } catch (err) { }
 
       return Promise.reject(error);
     },
