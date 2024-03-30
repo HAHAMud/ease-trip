@@ -14,7 +14,7 @@ import {
   EzTextField,
   EzCheckbox,
   EzIconButton,
-  EzTextButton,
+  EzButton,
   EzContainedButton,
 } from '@ease-trip/easy-ui';
 
@@ -55,7 +55,11 @@ export default function LoginPage() {
   return (
     <Fragment>
       <Dialog open>
-        <DialogTitle>Ease Trip</DialogTitle>
+        <DialogTitle>
+          <EzButton onClick={handleTitleClick}>
+            {LOGO_NAME}
+          </EzButton>
+        </DialogTitle>
         <DialogContent>
           <Grid rowSpacing={2}>
             <EzForm
