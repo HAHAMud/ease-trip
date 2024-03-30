@@ -21,5 +21,13 @@
       "path": "../packages/frontend",
     },
   ],
-  "settings": {},
+  "settings": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "never",
+      "source.fixAll.eslint": "explicit",
+    },
+    "eslint.validate": ["typescript", "typescriptreact", "javascript", "javascriptreact"],
+  },
 }

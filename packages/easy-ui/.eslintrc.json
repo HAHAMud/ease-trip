@@ -12,6 +12,8 @@
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "alphabetize": { "order": "asc", "caseInsensitive": true },
         "distinctGroup": false,
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "never",
         "pathGroups": [
           {
             "pattern": "react",
