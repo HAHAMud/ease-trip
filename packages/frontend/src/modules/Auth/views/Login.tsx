@@ -14,11 +14,13 @@ import {
   EzTextField,
   EzCheckbox,
   EzIconButton,
+  EzButton,
   EzContainedButton,
 } from '@ease-trip/easy-ui';
 
 import { login } from '@/api/auth';
 import { defaultValues, LoginForm, loginSchema } from '../models';
+import { LOGO_NAME } from '@/constants';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -46,10 +48,18 @@ export default function LoginPage() {
     });
   };
 
+  const handleTitleClick = () => {
+    router.push('/login');
+  }
+
   return (
     <Fragment>
       <Dialog open>
-        <DialogTitle>Ease Trip</DialogTitle>
+        <DialogTitle>
+          <EzButton onClick={handleTitleClick}>
+            {LOGO_NAME}
+          </EzButton>
+        </DialogTitle>
         <DialogContent>
           <Grid rowSpacing={2}>
             <EzForm
