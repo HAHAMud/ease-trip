@@ -12,7 +12,7 @@ function comparePassword(password: string, hash: string) {
 }
 
 function generateAccessToken(val: Parameters<typeof jwt.sign>[0]) {
-  return jwt.sign(val, jwtSecret, { expiresIn: '2 days' });
+  return jwt.sign(val, jwtSecret, { expiresIn: '7 days' });
 }
 
 router.post('/register', async (req, res) => {
