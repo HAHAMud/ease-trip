@@ -1,24 +1,12 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
+import cond from 'lodash/cond';
+import { middlewares } from './middlewares';
 
-// This function can be marked `async` if using `await` inside
-
-const guardRoutes = ['/planning'];
+const getResponse = cond(middlewares)
 
 export function middleware(request: NextRequest) {
-  const authorization = headers().get('Authorization');
-  const isMatchRoute = guardRoutes.some((path) => request.nextUrl.pathname.match(path));
-
-  if (isMatchRoute && authorization) {
-    return NextResponse.next();
-  }
-
-  if (isMatchRoute && authorization === null) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
-  return NextResponse.next();
+  return getResponse(request) ?? NextResponse.next();
 }
 
 export const config = {
