@@ -41,18 +41,6 @@ pnpm dev:fe
 pnpm fe
 ```
 
-### Start Docker
-
-```sh
-docker-compose up
-```
-
-If you want to reinstall by node_modules:
-
-```sh
-docker-compose up --build
-```
-
 ### Storybook
 ```sh
 pnpm storybook
