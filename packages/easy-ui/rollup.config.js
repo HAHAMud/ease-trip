@@ -14,6 +14,10 @@ const pkg = JSON.parse(fs.readFileSync(path.join(rootPath, 'package.json'), 'utf
 
 const external = [
   '@mui/material-nextjs/v14-pagesRouter',
+  /^@mui\/material\//,
+  /^@mui\/icons-material\//,
+  /^react\//,
+  /^react-dom\//,
   ...Object.keys(pkg?.peerDependencies || {}),
   ...Object.keys(pkg?.dependencies || {}),
 ];
