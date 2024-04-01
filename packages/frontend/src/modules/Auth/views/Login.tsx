@@ -17,8 +17,8 @@ import {
 } from '@ease-trip/easy-ui';
 import { login } from '@/api/auth';
 import { LOGO_NAME } from '@/constants';
-import { defaultValues, LoginForm, loginSchema } from '../models';
 import { setStorageItem } from '@/utils';
+import { defaultValues, LoginForm, loginSchema } from '../models';
 
 type Props = {
   open?: boolean;
