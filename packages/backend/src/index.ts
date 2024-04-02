@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { config } from 'dotenv';
 import cookieParser from 'cookie-parser';
 import routes from './routes';
@@ -21,7 +21,7 @@ app.listen(port, () => {
   }
 });
 
-app.get('/hc', (req: Request, res: Response) => {
+app.get('/hc', (req, res) => {
   res.send('ok');
 });
 

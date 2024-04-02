@@ -1,277 +1,311 @@
 {
-  "info": {
-    "_postman_id": "3d1271e2-4fc6-4a1d-a122-4915bbf8087e",
-    "name": "EaseTrip",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "197760"
-  },
-  "item": [
-    {
-      "name": "Auth",
-      "item": [
-        {
-          "name": "Login",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{apiServer}}/auth/login",
-              "host": ["{{apiServer}}"],
-              "path": ["auth", "login"]
-            }
-          },
-          "response": [
-            {
-              "name": "Login",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{apiServer}}/auth/login",
-                  "host": ["{{apiServer}}"],
-                  "path": ["auth", "login"]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "x-powered-by",
-                  "value": "Express"
-                },
-                {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "content-length",
-                  "value": "231"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"e7-xJHMBsZUvTm1ZxXVlgLH8bluSLo\""
-                },
-                {
-                  "key": "date",
-                  "value": "Mon, 01 Apr 2024 07:06:52 GMT"
-                },
-                {
-                  "key": "connection",
-                  "value": "close"
-                },
-                {
-                  "key": "Vary",
-                  "value": "Accept-Encoding"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"id\": 2,\n    \"name\": \"\",\n    \"email\": \"abc@abc.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IiIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE3MTE5NTUyMTIsImV4cCI6MTcxMjU2MDAxMn0.oMvcmFEb0WamqM4l8rkZFqmqXuQhng6dsmP5NZ0LfQM\"\n}"
-            }
-          ]
-        },
-        {
-          "name": "Check Email duplication",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"email\": \"abc@abc.com\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{apiServer}}/auth/check-email",
-              "host": ["{{apiServer}}"],
-              "path": ["auth", "check-email"]
-            }
-          },
-          "response": [
-            {
-              "name": "Check Email duplication",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"email\": \"abc@abc.com\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{apiServer}}/auth/check-email",
-                  "host": ["{{apiServer}}"],
-                  "path": ["auth", "check-email"]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "x-powered-by",
-                  "value": "Express"
-                },
-                {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "content-length",
-                  "value": "19"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"13-7T+5RCJs2fe7yKHKEdaDuGouNbU\""
-                },
-                {
-                  "key": "date",
-                  "value": "Mon, 01 Apr 2024 07:09:47 GMT"
-                },
-                {
-                  "key": "connection",
-                  "value": "close"
-                },
-                {
-                  "key": "Vary",
-                  "value": "Accept-Encoding"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"isExisting\": true\n}"
-            }
-          ]
-        },
-        {
-          "name": "Register",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{apiServer}}/auth/register",
-              "host": ["{{apiServer}}"],
-              "path": ["auth", "register"]
-            }
-          },
-          "response": [
-            {
-              "name": "Register",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{apiServer}}/auth/register",
-                  "host": ["{{apiServer}}"],
-                  "path": ["auth", "register"]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "x-powered-by",
-                  "value": "Express"
-                },
-                {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "content-length",
-                  "value": "35"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"23-s4n7Q/QzQ4l5FrQrsqnQHPW3H8g\""
-                },
-                {
-                  "key": "date",
-                  "value": "Mon, 01 Apr 2024 07:08:12 GMT"
-                },
-                {
-                  "key": "connection",
-                  "value": "close"
-                },
-                {
-                  "key": "Vary",
-                  "value": "Accept-Encoding"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n    \"message\": \"Email already exists.\"\n}"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "exec": [""]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "apiServer",
-      "value": "http://localhost:4000/api",
-      "type": "string"
-    }
-  ]
+	"info": {
+		"_postman_id": "3d1271e2-4fc6-4a1d-a122-4915bbf8087e",
+		"name": "EaseTrip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "197760"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiServer}}/auth/login",
+							"host": [
+								"{{apiServer}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiServer}}/auth/login",
+									"host": [
+										"{{apiServer}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "231"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"e7-xJHMBsZUvTm1ZxXVlgLH8bluSLo\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 01 Apr 2024 07:06:52 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"\",\n    \"email\": \"abc@abc.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IiIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE3MTE5NTUyMTIsImV4cCI6MTcxMjU2MDAxMn0.oMvcmFEb0WamqM4l8rkZFqmqXuQhng6dsmP5NZ0LfQM\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Check Email duplication",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"abc@abc.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiServer}}/auth/check-email",
+							"host": [
+								"{{apiServer}}"
+							],
+							"path": [
+								"auth",
+								"check-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Check Email duplication",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"abc@abc.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiServer}}/auth/check-email",
+									"host": [
+										"{{apiServer}}"
+									],
+									"path": [
+										"auth",
+										"check-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "19"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"13-7T+5RCJs2fe7yKHKEdaDuGouNbU\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 01 Apr 2024 07:09:47 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"isExisting\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiServer}}/auth/register",
+							"host": [
+								"{{apiServer}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"abc@abc.com\",\n    \"password\": \"abc123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiServer}}/auth/register",
+									"host": [
+										"{{apiServer}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "35"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"23-s4n7Q/QzQ4l5FrQrsqnQHPW3H8g\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 01 Apr 2024 07:08:12 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Email already exists.\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiServer",
+			"value": "http://localhost:4004/api",
+			"type": "string"
+		}
+	]
 }
