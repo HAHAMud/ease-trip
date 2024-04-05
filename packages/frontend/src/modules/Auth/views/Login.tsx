@@ -1,30 +1,29 @@
-import { MouseEvent as ReactMouseEvent, useState } from 'react';
+import type { MouseEventHandler, MouseEvent as ReactMouseEvent } from 'react';
+import { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import {
-  Dialog,
-  DialogContent,
-  DialogActions,
-  DialogTitle,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
   Grid,
   EzForm,
   EzTextField,
   EzCheckbox,
   EzIconButton,
-  EzButton,
   EzContainedButton,
   useToast,
+  Typography,
 } from '@ease-trip/easy-ui';
 import { login } from '@/api/auth';
 import { LOGO_NAME } from '@/constants';
 import { setStorageItem } from '@/utils';
 import { defaultValues, LoginForm, loginSchema } from '../models';
 
-type Props = {
-  open?: boolean;
-};
-
-export default function LoginPage({ open = true }: Props) {
+export default function LoginPage() {
   const router = useRouter();
   const toast = useToast();
   const mutation = useMutation({
@@ -33,8 +32,10 @@ export default function LoginPage({ open = true }: Props) {
       console.log('🚀 ~ LoginPage ~ data:', data);
       setStorageItem('ez-token', data.token);
     },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.message);
+      }
     },
   });
 
@@ -50,42 +51,59 @@ export default function LoginPage({ open = true }: Props) {
     return mutation.mutateAsync(data);
   };
 
-  const handleTitleClick = () => {
+  const handleTitleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
     router.push('/login');
   };
 
   return (
-    <>
-      <Dialog open={open}>
-        <DialogTitle>
-          <EzButton onClick={handleTitleClick}>{LOGO_NAME}</EzButton>
-        </DialogTitle>
-        <DialogContent>
-          <Grid rowSpacing={2}>
-            <EzForm defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
-              <EzTextField fullWidth name="email" label="Email" />
-              <EzTextField
-                fullWidth
-                name="password"
-                label="Password"
-                type={showPassword ? 'text' : 'password'}
-                endAdornment={
-                  <EzIconButton
-                    name={showPassword ? 'VisibilityOff' : 'Visibility'}
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  />
-                }
-              />
-              <EzCheckbox name="rememberMe" label="keep me signed in." />
-              <DialogActions>
-                <EzContainedButton type="submit">Sign In</EzContainedButton>
-              </DialogActions>
-            </EzForm>
-          </Grid>
-        </DialogContent>
-      </Dialog>
-    </>
+    <Grid
+      container
+      height="100dvh"
+      alignItems="center"
+      justifyContent="center"
+      columns={{ xs: 1, sm: 4, md: 8, lg: 12 }}
+    >
+      <Grid item xs={1} sm={2}>
+        <Card sx={{ minWidth: 390, maxWidth: 540 }}>
+          <CardHeader
+            component={() => (
+              <Link href="/login" onClick={handleTitleClick}>
+                <Typography variant="h5" mt={1} mx={2}>
+                  {LOGO_NAME}
+                </Typography>
+              </Link>
+            )}
+          />
+          <CardContent>
+            <Grid rowSpacing={2}>
+              <EzForm defaultValues={defaultValues} schema={loginSchema} onSubmit={handleSubmit}>
+                <EzTextField fullWidth name="email" label="Email" />
+                <EzTextField
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type={showPassword ? 'text' : 'password'}
+                  endAdornment={
+                    <EzIconButton
+                      name={showPassword ? 'VisibilityOff' : 'Visibility'}
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    />
+                  }
+                />
+                <EzCheckbox name="rememberMe" label="keep me signed in." />
+                <CardActions>
+                  <Grid item ml="auto">
+                    <EzContainedButton type="submit">Sign In</EzContainedButton>
+                  </Grid>
+                </CardActions>
+              </EzForm>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   );
 }
