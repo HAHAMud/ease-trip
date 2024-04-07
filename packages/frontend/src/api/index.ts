@@ -1,3 +1,1 @@
-export enum QueryKey {
-  GetUser = 'getUser',
-}
+export { QueryKey } from './constants';

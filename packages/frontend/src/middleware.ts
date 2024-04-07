@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import cond from 'lodash/cond';
 import { middlewares } from './middlewares';
 
-const getResponse = cond(middlewares)
+const getResponse = cond(middlewares);
 
 export function middleware(request: NextRequest) {
   return getResponse(request) ?? NextResponse.next();
