@@ -3,10 +3,6 @@ import { RegisterForm } from '@/modules/Auth/models';
 
 type RegisterResult = { email: string; password: string; name: string; token: string };
 
-export enum QueryKey {
-  Login = 'login',
-}
-
 const client = createClient({
   baseURL: '/api/auth',
 });

@@ -7,10 +7,6 @@ type User = {
   token: string;
 };
 
-export enum QueryKey {
-  Login = 'login',
-}
-
 const client = createClient({
   baseURL: '/api/auth',
 });
