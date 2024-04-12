@@ -4,9 +4,9 @@ export enum RoutePath {
   LOGIN = '/login',
   REGISTER = '/register',
   NOT_FOUND = '/404',
-  ERROR = '/500'
+  ERROR = '/500',
 }
 
 export enum HeaderKey {
-  AUTHORIZATION = 'Authorization'
+  AUTHORIZATION = 'Authorization',
 }

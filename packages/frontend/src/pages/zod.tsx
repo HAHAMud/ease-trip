@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import {
   Button,
   Dialog,
@@ -8,7 +9,6 @@ import {
   EzForm,
   EzTextField,
 } from '@ease-trip/easy-ui';
-import { z } from 'zod';
 
 const loginSchema = z.object({
   text: z.string().regex(/^[A-Za-z]+$/, '只能英文字'),

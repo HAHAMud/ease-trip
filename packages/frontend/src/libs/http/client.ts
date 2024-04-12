@@ -24,8 +24,7 @@ export const createClient = (config: AxiosRequestConfig) => {
     }
 
     return request;
-  }
-  );
+  });
 
   client.interceptors.response.use(
     (response) => response,
@@ -40,10 +39,10 @@ export const createClient = (config: AxiosRequestConfig) => {
 
       try {
         return Promise.reject(error);
-      } catch (err) { }
+      } catch (err) {}
 
       return Promise.reject(error);
-    },
+    }
   );
 
   return client;
