@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { styled } from '@mui/material';
 import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, UseFormProps, useForm } from 'react-hook-form';

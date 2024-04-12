@@ -12,6 +12,9 @@ export const createClient = (config: AxiosRequestConfig) => {
 
   const client = axios.create({
     baseURL: url,
+    validateStatus: (status) => {
+      return status === 200;
+    },
     ...rest,
   });
 
