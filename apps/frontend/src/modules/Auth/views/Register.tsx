@@ -19,6 +19,7 @@ import { register } from '@/api/auth';
 import { defaultRegisterValues, RegisterFormProps, registerSchema } from '@/modules/Auth/models';
 
 export default function RegisterForm() {
+  const fromRef = useRef<HTMLFormElement>(null);
   const [showPassword, setShowPassword] = useState(false);
 
   const toast = useToast();
