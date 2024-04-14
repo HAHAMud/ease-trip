@@ -14,7 +14,8 @@
     "fe": "pnpm run dev:fe",
     "storybook": "pnpm --filter easy-ui run storybook",
     "setup": "sh ./scripts/setup.sh",
-    "format:fe": "pnpm --filter frontend exec eslint --fix ."
+    "format:fe": "pnpm --filter @ease-trip/frontend exec eslint --fix .",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Augustine",
@@ -24,6 +25,7 @@
     "pnpm": ">=8.15.0 <9.0.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "husky": "^9.0.11"
   }
 }
