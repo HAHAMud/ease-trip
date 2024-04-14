@@ -10,9 +10,9 @@ services:
     depends_on:
       - ease-trip-backend
     volumes:
-      - ./packages/frontend/src:/app/packages/frontend/src
-      - ./packages/common/src:/app/packages/common/src
-      - ./packages/easy-ui/src:/app/packages/easy-ui/src
+      - ./apps/frontend/src:/app/apps/frontend/src
+      - ./apps/common/src:/app/apps/common/src
+      - ./apps/easy-ui/src:/app/apps/easy-ui/src
     ports:
       - '4000:4000'
     working_dir: /app
@@ -25,8 +25,8 @@ services:
     image: ease-trip-backend:latest
     container_name: ease-trip-backend
     volumes:
-      - ./packages/backend/src:/app/packages/backend/src
-      - ./packages/common/src:/app/packages/common/src
+      - ./apps/backend/src:/app/apps/backend/src
+      - ./apps/common/src:/app/apps/common/src
     ports:
       - '4004:4004'
     working_dir: /app
