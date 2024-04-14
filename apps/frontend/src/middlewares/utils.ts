@@ -13,3 +13,14 @@ export const middlewareController = {
     return headers();
   },
 };
+
+export function cond<T, R>(pairs: Array<[(p: T) => boolean, (p: T) => R]>): (p: T) => R {
+  return (params) => {
+    for (const [predicate, fn] of pairs) {
+      if (predicate(params)) {
+        return fn(params);
+      }
+    }
+    throw new Error('No predicate matched');
+  };
+}

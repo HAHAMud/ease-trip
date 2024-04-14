@@ -1,6 +1,5 @@
-import cond from 'lodash/cond';
 import { HeaderKey, RoutePath } from './constants';
-import { Middleware, NextRequest, middlewareController } from './utils';
+import { Middleware, NextRequest, middlewareController, cond } from './utils';
 
 const authGuardPages = [RoutePath.HOME, RoutePath.PLANNING];
 

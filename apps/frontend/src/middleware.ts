@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import cond from 'lodash/cond';
 import { middlewares } from './middlewares';
+import { cond } from './middlewares/utils';
 
 const getResponse = cond(middlewares);
 
