@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   plugins: ['prettier'],
   extends: ['next/core-web-vitals', 'prettier', 'plugin:import/recommended', 'plugin:import/typescript'],
   ignorePatterns: ['node_modules', 'build', 'dist', 'coverage', 'public', '.*rc.cjs', '*.config.js'],
