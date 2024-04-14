@@ -1,5 +1,5 @@
 import type { MouseEvent as ReactMouseEvent } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import {
   Card,
@@ -44,10 +44,6 @@ export default function RegisterForm() {
     event.preventDefault();
   };
 
-  useEffect(() => {
-    console.log('fromRef', fromRef);
-  }, []);
-
   return (
     <Grid
       container
@@ -61,12 +57,7 @@ export default function RegisterForm() {
           <CardHeader title="Register" />
           <CardContent>
             <Grid rowSpacing={2}>
-              <EzForm
-                ref={fromRef}
-                defaultValues={defaultRegisterValues}
-                schema={registerSchema}
-                onSubmit={handleSubmit}
-              >
+              <EzForm defaultValues={defaultRegisterValues} schema={registerSchema} onSubmit={handleSubmit}>
                 <EzTextField fullWidth name="email" label="Email" />
                 <EzTextField
                   fullWidth
