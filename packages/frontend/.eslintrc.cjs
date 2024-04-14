@@ -1,6 +1,7 @@
 module.exports = {
   plugins: ['prettier'],
   extends: ['next/core-web-vitals', 'prettier', 'plugin:import/recommended', 'plugin:import/typescript'],
+  ignorePatterns: ['node_modules', 'build', 'dist', 'coverage', 'public', '.*rc.cjs', '*.config.js'],
   env: {
     browser: true,
     es2021: true,
@@ -12,6 +13,7 @@ module.exports = {
     'import/no-cycle': 'warn',
     'import/no-empty-named-blocks': 'error',
     'import/no-unused-modules': 'error',
+    'import/no-unresolved': 'off',
     'import/order': [
       'error',
       {
