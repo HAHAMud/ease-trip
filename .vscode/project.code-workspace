@@ -6,19 +6,19 @@
     },
     {
       "name": "backend",
-      "path": "../packages/backend",
+      "path": "../apps/backend",
     },
     {
       "name": "common",
-      "path": "../packages/common",
+      "path": "../apps/common",
     },
     {
       "name": "easy-ui",
-      "path": "../packages/easy-ui",
+      "path": "../apps/easy-ui",
     },
     {
       "name": "frontend",
-      "path": "../packages/frontend",
+      "path": "../apps/frontend",
     },
   ],
   "settings": {

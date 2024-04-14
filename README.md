@@ -7,7 +7,7 @@
 
 ## Before Start
 
-Go to `packages/backend` and create `.env` file reference to `.env.example` file
+Go to `apps/backend` and create `.env` file reference to `.env.example` file
 
 ## Editor
 

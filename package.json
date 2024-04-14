@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch-common": "pnpm --filter @ease-trip/common run watch",
-    "watch-easy-ui": "pnpm --filter @ease-trip/easy-ui run watch",
-    "init-be": "pnpm --filter @ease-trip/backend run dev",
-    "init-fe": "pnpm --filter @ease-trip/frontend run dev",
+    "watch-common": "pnpm --filter common run watch",
+    "watch-easy-ui": "pnpm --filter easy-ui run watch",
+    "init-be": "pnpm --filter backend run dev",
+    "init-fe": "pnpm --filter frontend run dev",
     "dev:be": "concurrently \"npm:watch-common\" \"npm:init-be\"",
     "dev:fe": "concurrently \"npm:watch-*\" \"npm:init-fe\"",
     "be": "pnpm run dev:be",
     "fe": "pnpm run dev:fe",
-    "storybook": "pnpm --filter @ease-trip/easy-ui run storybook",
+    "storybook": "pnpm --filter easy-ui run storybook",
     "setup": "sh ./scripts/setup.sh",
-    "format:fe": "pnpm --filter @ease-trip/frontend exec eslint --fix ."
+    "format:fe": "pnpm --filter frontend exec eslint --fix ."
   },
   "keywords": [],
   "author": "Augustine",
