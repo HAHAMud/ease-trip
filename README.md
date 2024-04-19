@@ -14,7 +14,6 @@ Go to `apps/backend` and create `.env` file reference to `.env.example` file
 If you are using VSCode (strongly recommend), you need to install the following extensions:
 
 1. [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-2. [biome](https://marketplace.visualstudio.com/items?itemName=biomejs.biome)
 
 ## Dev Setup
 
