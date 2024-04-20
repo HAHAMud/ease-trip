@@ -12,3 +12,9 @@ export async function register(payload: RegisterFormProps) {
 
   return response.data;
 }
+
+export async function checkoutEmail(payload: RegisterFormProps) {
+  const response = await client.post<RegisterResult>('/check-email', payload);
+
+  return response.data;
+}

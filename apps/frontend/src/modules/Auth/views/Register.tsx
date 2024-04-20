@@ -1,5 +1,6 @@
 import type { MouseEvent as ReactMouseEvent } from 'react';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import {
   Card,
@@ -13,21 +14,18 @@ import {
   EzIconButton,
   EzContainedButton,
   useToast,
-  Typography,
 } from '@ease-trip/easy-ui';
 import { register } from '@/api/auth';
 import { defaultRegisterValues, RegisterFormProps, registerSchema } from '@/modules/Auth/models';
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
-
   const toast = useToast();
+  const router = useRouter();
   const mutation = useMutation({
     mutationFn: register,
-    onSuccess: (data) => {
-      console.log('🚀 ~ register result ~ data:', data);
-
-      // setStorageItem('ez-token', data.token);
+    onSuccess: () => {
+      router.push('/login');
     },
     onError: (error) => {
       toast.error(error.message);
@@ -58,7 +56,10 @@ export default function RegisterForm() {
           <CardContent>
             <Grid rowSpacing={2}>
               <EzForm defaultValues={defaultRegisterValues} schema={registerSchema} onSubmit={handleSubmit}>
-                <EzTextField fullWidth name="email" label="Email" />
+                <div className="flex">
+                  <EzTextField fullWidth name="email" label="Email" />
+                  <div></div>
+                </div>
                 <EzTextField
                   fullWidth
                   name="password"
@@ -78,9 +79,7 @@ export default function RegisterForm() {
                 <EzCheckbox name="businessAgreement" label="同意蒐集資料做為商業用途" />
                 <CardActions>
                   <Grid item ml="auto">
-                    <EzContainedButton type="submit" disabled>
-                      submit
-                    </EzContainedButton>
+                    <EzContainedButton type="submit">submit</EzContainedButton>
                   </Grid>
                 </CardActions>
               </EzForm>
