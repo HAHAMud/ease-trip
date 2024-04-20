@@ -15,15 +15,20 @@ import {
   EzContainedButton,
   useToast,
 } from '@ease-trip/easy-ui';
-import { register } from '@/api/auth';
+import { registerAccount } from '@/api/auth';
 import { defaultRegisterValues, RegisterFormProps, registerSchema } from '@/modules/Auth/models';
+import CheckEmailButton from './CheckEmailButton';
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isEmailCheck, setIsEmailCheck] = useState(false);
+  const [checkServiceAgreement, setCheckService] = useState(false);
+  const [checkBusinessAgreement, setBusinessService] = useState(false);
+
   const toast = useToast();
   const router = useRouter();
   const mutation = useMutation({
-    mutationFn: register,
+    mutationFn: registerAccount,
     onSuccess: () => {
       router.push('/login');
     },
@@ -42,6 +47,8 @@ export default function RegisterForm() {
     event.preventDefault();
   };
 
+  const isSubmitAllow = isEmailCheck && checkServiceAgreement && checkBusinessAgreement;
+
   return (
     <Grid
       container
@@ -56,10 +63,15 @@ export default function RegisterForm() {
           <CardContent>
             <Grid rowSpacing={2}>
               <EzForm defaultValues={defaultRegisterValues} schema={registerSchema} onSubmit={handleSubmit}>
-                <div className="flex">
-                  <EzTextField fullWidth name="email" label="Email" />
-                  <div></div>
-                </div>
+                <EzTextField
+                  fullWidth
+                  name="email"
+                  label="Email"
+                  endAdornment={<CheckEmailButton isCheck={isEmailCheck} onChange={setIsEmailCheck} />}
+                  onInput={() => {
+                    setIsEmailCheck(false);
+                  }}
+                />
                 <EzTextField
                   fullWidth
                   name="password"
@@ -75,11 +87,25 @@ export default function RegisterForm() {
                   }
                 />
                 <EzTextField fullWidth name="city" label="city(option)" type="text" />
-                <EzCheckbox name="serviceAgreement" label="同意服務條款" />
-                <EzCheckbox name="businessAgreement" label="同意蒐集資料做為商業用途" />
+                <EzCheckbox
+                  name="serviceAgreement"
+                  label="同意服務條款"
+                  onChange={(e) => {
+                    setCheckService(e.target.checked);
+                  }}
+                />
+                <EzCheckbox
+                  name="businessAgreement"
+                  label="同意蒐集資料做為商業用途"
+                  onChange={(e) => {
+                    setBusinessService(e.target.checked);
+                  }}
+                />
                 <CardActions>
                   <Grid item ml="auto">
-                    <EzContainedButton type="submit">submit</EzContainedButton>
+                    <EzContainedButton disabled={!isSubmitAllow} type="submit">
+                      submit
+                    </EzContainedButton>
                   </Grid>
                 </CardActions>
               </EzForm>
