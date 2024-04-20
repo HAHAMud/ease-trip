@@ -10,7 +10,6 @@ interface CheckEmailButtonProps {
 export default function CheckEmailButton({ isCheck, onChange }: CheckEmailButtonProps) {
   const methods = useFormContext();
   const toast = useToast();
-  const email = methods.getValues('email') as string;
 
   const mutation = useMutation({
     mutationFn: checkEmail,
@@ -27,6 +26,7 @@ export default function CheckEmailButton({ isCheck, onChange }: CheckEmailButton
       className={isCheck ? 'text-green-500' : ''}
       name={isCheck ? 'CheckCircleOutline' : 'LiveHelp'}
       onClick={() => {
+        const email = methods.getValues('email') as string;
         mutation.mutateAsync({ email });
       }}
     />
