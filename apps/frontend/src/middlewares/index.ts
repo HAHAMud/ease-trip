@@ -1,4 +1,4 @@
 import { authorizationMiddleware } from './authorization';
-import { Middleware } from './utils';
+import { Middleware, middlewareController } from './utils';
 
-export const middlewares: Middleware[] = [authorizationMiddleware()];
+export const middlewares: Middleware[] = [authorizationMiddleware(), [() => true, () => middlewareController.next()]];
