@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { styled } from '@mui/material';
-import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, UseFormProps, useForm } from 'react-hook-form';
+import { FieldValues, FormProvider, SubmitErrorHandler, SubmitHandler, UseFormProps, useForm, useFormContext } from 'react-hook-form';
 import { ZodSchema } from 'zod';
 
 const StyledForm = styled('form')({
@@ -33,4 +33,8 @@ export function EzForm({ children, onSubmit, onError, schema, ...restUseFormProp
       <StyledForm onSubmit={onSubmitFn}>{children}</StyledForm>
     </FormProvider>
   );
+}
+
+export {
+  useFormContext
 }

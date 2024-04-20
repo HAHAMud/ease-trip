@@ -7,14 +7,14 @@ const client = createClient({
   baseURL: '/api/auth',
 });
 
-export async function register(payload: RegisterFormProps) {
+export async function registerAccount(payload: RegisterFormProps) {
   const response = await client.post<RegisterResult>('/register', payload);
 
   return response.data;
 }
 
-export async function checkoutEmail(payload: RegisterFormProps) {
-  const response = await client.post<RegisterResult>('/check-email', payload);
+export async function checkEmail(payload: { email: string }) {
+  const response = await client.post<{ isExisting: boolean }>('/check-email', payload);
 
   return response.data;
 }

@@ -28,14 +28,14 @@ export function EzButton(props: EzButtonProps) {
 export type EzContainedButtonProps = VariantComponentProps<EzButtonProps>;
 export const EzContainedButton = variantComponentFactory(EzButton, {
   variant: 'contained',
-});
+}) as React.FC<EzContainedButtonProps>;
 
 export type EzOutlinedButtonProps = VariantComponentProps<EzButtonProps>;
 export const EzOutlinedButton = variantComponentFactory(EzButton, {
   variant: 'outlined',
-});
+}) as React.FC<EzOutlinedButtonProps>;
 
 export type EzTextButtonProps = VariantComponentProps<EzButtonProps>;
 export const EzTextButton = variantComponentFactory(EzButton, {
   variant: 'text',
-});
+}) as React.FC<EzTextButtonProps>;
