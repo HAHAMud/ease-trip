@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { Box, Divider, Typography } from '@mui/material';
 import { SnackbarContent, CustomContentProps, closeSnackbar, useSnackbar } from 'notistack';
-import { EzTextButton } from '../EzButton';
+import { EzTextButton } from '../button';
 import { defaultPropsComponentFactory } from '../utils/utilityType';
 
 declare module '@mui/material/Typography' {
@@ -18,22 +18,22 @@ declare module '@mui/material/Typography' {
 
 export type EzToastProps = Partial<CustomContentProps>;
 
-const ToastContainer = styled(Box)(() => ({
+const ToastContainer = styled(Box)({
   width: 320,
   borderRadius: '4px',
-}));
+});
 
-const ToastContent = styled(Box)(() => ({
+const ToastContent = styled(Box)({
   display: 'flex',
   alignItems: 'center',
-}));
+});
 
-const ToastActions = styled(Box)(() => ({
+const ToastActions = styled(Box)({
   display: 'flex',
   flexDirection: 'row-reverse',
   alignItems: 'center',
   justifyContent: 'space-between',
-}));
+});
 
 export const EzToast = forwardRef<HTMLDivElement, EzToastProps>((props, ref) => {
   const { id, variant = 'info', message, autoHideDuration = 5000, ...rest } = props;
