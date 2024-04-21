@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { IconButton, IconButtonProps } from '@mui/material';
-import { EzIcon, EzIconName } from '../EzIcon';
+import { EzIcon, EzIconName } from '../icon';
 
 export type EzIconButtonProps = IconButtonProps & {
   name: EzIconName;
