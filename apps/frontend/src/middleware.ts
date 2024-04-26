@@ -6,7 +6,7 @@ import { cond } from './middlewares/utils';
 const getResponse = cond(middlewares);
 
 export function middleware(request: NextRequest) {
-  return getResponse(request) ?? NextResponse.next();
+  return NextResponse.next();
 }
 
 export const config = {
