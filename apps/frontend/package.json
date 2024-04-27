@@ -12,6 +12,8 @@
   "dependencies": {
     "@ease-trip/common": "workspace:*",
     "@ease-trip/easy-ui": "workspace:*",
+    "@mui/base": "5.0.0-beta.40",
+    "@mui/icons-material": "^5.15.11",
     "@tanstack/react-query": "5.24.1",
     "axios": "1.6.7",
     "cookies-next": "^4.1.1",

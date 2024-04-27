@@ -302,6 +302,12 @@ importers:
       '@ease-trip/easy-ui':
         specifier: workspace:*
         version: link:../easy-ui
+      '@mui/base':
+        specifier: 5.0.0-beta.40
+        version: 5.0.0-beta.40(@types/react@18.2.63)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/icons-material':
+        specifier: ^5.15.11
+        version: 5.15.15(@mui/material@5.15.15)(@types/react@18.2.63)(react@18.2.0)
       '@tanstack/react-query':
         specifier: 5.24.1
         version: 5.24.1(react@18.2.0)
