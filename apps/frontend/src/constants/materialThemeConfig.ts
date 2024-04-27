@@ -7,7 +7,8 @@ const { green, purple } = colors;
  */
 export const materialThemeConfig: ThemeOptions = {
   palette: {
-    primary: { main: green[500] },
-    secondary: { main: purple[500] },
+    primary: { main: '#48C4C3' },
+    secondary: { main: '#D9D9D9' },
+    info: { main: '#6E6556' },
   },
 };
