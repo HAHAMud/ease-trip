@@ -1,16 +1,13 @@
-import { Inter } from 'next/font/google';
 import NextLink from 'next/link';
 import { useTheme, Grid } from '@ease-trip/easy-ui';
 import { LOGO_NAME } from '@/constants';
 import { AvatarDropdownMenu } from '@/modules/Auth/components';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export default function Planning() {
   const theme = useTheme();
 
   return (
-    <Grid className={inter.className}>
+    <Grid>
       <Grid
         container
         alignItems="center"
