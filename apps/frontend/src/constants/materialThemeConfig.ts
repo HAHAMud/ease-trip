@@ -1,5 +1,4 @@
-import { ThemeOptions, colors } from '@ease-trip/easy-ui';
-const { green, purple } = colors;
+import { ThemeOptions } from '@ease-trip/easy-ui';
 
 /**
  * @description theme configuration for material ui
@@ -10,5 +9,19 @@ export const materialThemeConfig: ThemeOptions = {
     primary: { main: '#48C4C3' },
     secondary: { main: '#D9D9D9' },
     info: { main: '#6E6556' },
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 };
