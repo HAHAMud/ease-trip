@@ -7,13 +7,13 @@ export default function Planning() {
   const theme = useTheme();
 
   return (
-    <Grid>
+    <Grid container direction="column">
       <Grid
         container
         alignItems="center"
         className="px-6 py-4"
         spacing="2"
-        style={{ backgroundColor: theme.palette.secondary.main }}
+        sx={{ backgroundColor: theme.palette.secondary.main }}
       >
         <NextLink href="/" className="font-bold text-2xl text-black">
           {LOGO_NAME}

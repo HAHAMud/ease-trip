@@ -4,12 +4,13 @@ import {
   Avatar,
   Grid,
   Menu,
-  MenuItem as BaseMenuItem,
+  MenuItem,
   ListItemText,
   ListItemIcon,
   useTheme,
   EzIcon,
   EzButton,
+  Box,
 } from '@ease-trip/easy-ui';
 import { USER_AVATAR_IMAGE_PATH } from '@/constants';
 
@@ -31,9 +32,6 @@ export function AvatarDropdownMenu() {
         <Avatar src={USER_AVATAR_IMAGE_PATH} alt="user avatar" sx={{ width: 36, height: 36 }} />
       </EzButton>
       <Menu
-        aria-controls={open ? 'demo-positioned-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
         anchorEl={anchorEl}
         slotProps={{ paper: { style: { backgroundColor: theme.palette.secondary.main } } }}
         open={open}
@@ -48,10 +46,10 @@ export function AvatarDropdownMenu() {
             paddingRight: '12px',
           }}
         >
-          <Grid container direction="row" gap={2}>
+          <Box display="flex" gap={2}>
             <Avatar src={USER_AVATAR_IMAGE_PATH} alt="user avatar" sx={{ width: 36, height: 36 }} />
             <div className="text-2xl font-bold leading-10">派大星</div>
-          </Grid>
+          </Box>
 
           <i className="text-sm not-italic">
             <span>一般會員</span>
@@ -62,21 +60,21 @@ export function AvatarDropdownMenu() {
           <span style={{ paddingLeft: '4px', paddingRight: '4px', fontSize: '0.875rem', lineHeight: '1.25rem' }}>
             選項
           </span>
-          <BaseMenuItem onClick={handleClose}>
+          <MenuItem onClick={handleClose}>
             <ListItemIcon>
               <EzIcon name="Settings" />
             </ListItemIcon>
             <ListItemText primary="設定" primaryTypographyProps={{ fontWeight: 600 }} />
-          </BaseMenuItem>
-          <BaseMenuItem onClick={handleClose}>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
             <ListItemIcon>
               <EzIcon name="TextSnippetOutlined" />
             </ListItemIcon>
             <ListItemText primary="服務條款" primaryTypographyProps={{ fontWeight: 600 }} />
-          </BaseMenuItem>
-          <BaseMenuItem style={{ backgroundColor: theme.palette.secondary.main }}>
+          </MenuItem>
+          <MenuItem sx={{ backgroundColor: theme.palette.secondary.main }}>
             <ListItemText primary="登出" primaryTypographyProps={{ textAlign: 'center', fontWeight: 600 }} />
-          </BaseMenuItem>
+          </MenuItem>
         </section>
       </Menu>
     </section>
