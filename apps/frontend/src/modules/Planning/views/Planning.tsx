@@ -1,14 +1,12 @@
 import { Inter } from 'next/font/google';
 import NextLink from 'next/link';
-import { hasCookie } from 'cookies-next';
 import { useTheme, Grid } from '@ease-trip/easy-ui';
-import { LOGO_NAME, AUTHORIZATION_COOKIE_NAME } from '@/constants';
+import { LOGO_NAME } from '@/constants';
 import { AvatarDropdownMenu } from '@/modules/Auth/components';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Planning() {
-  const hasAuth = hasCookie(AUTHORIZATION_COOKIE_NAME);
   const theme = useTheme();
 
   return (
@@ -20,7 +18,7 @@ export default function Planning() {
         spacing="2"
         style={{ backgroundColor: theme.palette.secondary.main }}
       >
-        <NextLink href={{ pathname: hasAuth === true ? '/' : '/login' }} className="font-bold text-2xl text-black">
+        <NextLink href="/" className="font-bold text-2xl text-black">
           {LOGO_NAME}
         </NextLink>
 
