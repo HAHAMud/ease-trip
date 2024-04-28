@@ -11,6 +11,7 @@ import {
   EzIcon,
   EzButton,
 } from '@ease-trip/easy-ui';
+import { USER_AVATAR_IMAGE_PATH } from '@/constants';
 
 export function AvatarDropdownMenu() {
   const theme = useTheme();
@@ -27,7 +28,7 @@ export function AvatarDropdownMenu() {
   return (
     <section className="ml-auto">
       <EzButton onClick={handleClick}>
-        <Avatar src="/assets/images/male-user-avatar.webp" alt="user avatar" sx={{ width: 36, height: 36 }} />
+        <Avatar src={USER_AVATAR_IMAGE_PATH} alt="user avatar" sx={{ width: 36, height: 36 }} />
       </EzButton>
       <Menu
         aria-controls={open ? 'demo-positioned-menu' : undefined}
@@ -48,7 +49,7 @@ export function AvatarDropdownMenu() {
           }}
         >
           <Grid container direction="row" gap={2}>
-            <Avatar src="/assets/images/male-user-avatar.webp" alt="user avatar" sx={{ width: 36, height: 36 }} />
+            <Avatar src={USER_AVATAR_IMAGE_PATH} alt="user avatar" sx={{ width: 36, height: 36 }} />
             <div className="text-2xl font-bold leading-10">派大星</div>
           </Grid>
 
