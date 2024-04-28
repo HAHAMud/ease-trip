@@ -1,6 +1,8 @@
 
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+import SettingsIcon from '@mui/icons-material/Settings';
+import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { SvgIcon, SvgIconProps } from '@mui/material';
@@ -10,6 +12,8 @@ export const iconMapping = {
   VisibilityOff: VisibilityOffIcon,
   CheckCircleOutline: CheckCircleOutlineIcon,
   LiveHelp: LiveHelpIcon,
+  Settings: SettingsIcon,
+  TextSnippetOutlined: TextSnippetOutlinedIcon,
 } as const;
 
 export type EzIconName = keyof typeof iconMapping;
