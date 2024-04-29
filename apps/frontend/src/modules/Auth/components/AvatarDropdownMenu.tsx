@@ -2,7 +2,6 @@ import type { MouseEvent } from 'react';
 import { useState } from 'react';
 import {
   Avatar,
-  Grid,
   Menu,
   MenuItem,
   ListItemText,
@@ -37,8 +36,8 @@ export function AvatarDropdownMenu() {
         open={open}
         onClose={handleClose}
       >
-        <section
-          style={{
+        <Box
+          sx={{
             backgroundColor: theme.palette.secondary.main,
             color: theme.palette.info.main,
             padding: '8px',
@@ -55,11 +54,9 @@ export function AvatarDropdownMenu() {
             <span>一般會員</span>
             <address>Johnson@gmail.com</address>
           </i>
-        </section>
-        <section style={{ backgroundColor: theme.palette.grey[50] }}>
-          <span style={{ paddingLeft: '4px', paddingRight: '4px', fontSize: '0.875rem', lineHeight: '1.25rem' }}>
-            選項
-          </span>
+        </Box>
+        <Box sx={{ backgroundColor: theme.palette.grey[50] }}>
+          <span className="text-sm px-1">選項</span>
           <MenuItem onClick={handleClose}>
             <ListItemIcon>
               <EzIcon name="Settings" />
@@ -75,7 +72,7 @@ export function AvatarDropdownMenu() {
           <MenuItem sx={{ backgroundColor: theme.palette.secondary.main }}>
             <ListItemText primary="登出" primaryTypographyProps={{ textAlign: 'center', fontWeight: 600 }} />
           </MenuItem>
-        </section>
+        </Box>
       </Menu>
     </section>
   );
