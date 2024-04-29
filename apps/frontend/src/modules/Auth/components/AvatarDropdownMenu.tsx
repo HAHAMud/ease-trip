@@ -40,9 +40,8 @@ export function AvatarDropdownMenu() {
           sx={{
             backgroundColor: theme.palette.secondary.main,
             color: theme.palette.info.main,
-            padding: '8px',
-            paddingLeft: '12px',
-            paddingRight: '12px',
+            paddingX: '12px',
+            paddingY: '8px',
           }}
         >
           <Box display="flex" gap={2}>
