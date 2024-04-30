@@ -10,6 +10,7 @@ import {
   EzIcon,
   EzButton,
   Box,
+  Typography,
 } from '@ease-trip/easy-ui';
 import { USER_AVATAR_IMAGE_PATH } from '@/constants';
 
@@ -26,7 +27,7 @@ export function AvatarDropdownMenu() {
   };
 
   return (
-    <section className="ml-auto">
+    <Box marginLeft="auto">
       <EzButton onClick={handleClick}>
         <Avatar src={USER_AVATAR_IMAGE_PATH} alt="user avatar" sx={{ width: 36, height: 36 }} />
       </EzButton>
@@ -37,25 +38,33 @@ export function AvatarDropdownMenu() {
         onClose={handleClose}
       >
         <Box
-          sx={{
+          paddingX="12px"
+          paddingY="8px"
+          sx={(theme) => ({
             backgroundColor: theme.palette.secondary.main,
             color: theme.palette.info.main,
-            paddingX: '12px',
-            paddingY: '8px',
-          }}
+          })}
         >
           <Box display="flex" gap={2}>
             <Avatar src={USER_AVATAR_IMAGE_PATH} alt="user avatar" sx={{ width: 36, height: 36 }} />
-            <div className="text-2xl font-bold leading-10">派大星</div>
+            <Typography variant="h5" fontWeight={600}>
+              派大星
+            </Typography>
           </Box>
 
-          <i className="text-sm not-italic">
-            <span>一般會員</span>
-            <address>Johnson@gmail.com</address>
-          </i>
+          <Box paddingTop="4px">
+            <Typography variant="overline" display="block">
+              一般會員
+            </Typography>
+            <Typography variant="overline" display="block">
+              Johnson@gmail.com
+            </Typography>
+          </Box>
         </Box>
-        <Box sx={{ backgroundColor: theme.palette.grey[50] }}>
-          <span className="text-sm px-1">選項</span>
+        <Box paddingX="4px" sx={(theme) => ({ backgroundColor: theme.palette.grey[50] })}>
+          <Typography variant="tiny" marginX="4px">
+            選項
+          </Typography>
           <MenuItem onClick={handleClose}>
             <ListItemIcon>
               <EzIcon name="Settings" />
@@ -73,6 +82,6 @@ export function AvatarDropdownMenu() {
           </MenuItem>
         </Box>
       </Menu>
-    </section>
+    </Box>
   );
 }

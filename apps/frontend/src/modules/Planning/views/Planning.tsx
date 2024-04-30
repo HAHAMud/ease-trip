@@ -1,17 +1,17 @@
 import NextLink from 'next/link';
-import { useTheme, Grid, Box } from '@ease-trip/easy-ui';
+import { Grid, Box } from '@ease-trip/easy-ui';
 import { LOGO_NAME } from '@/constants';
 import { AvatarDropdownMenu } from '@/modules/Auth/components';
 
 export default function Planning() {
-  const theme = useTheme();
-
   return (
     <Grid container direction="column">
       <Box
         display="flex"
         alignItems="center"
-        sx={{ backgroundColor: theme.palette.secondary.main, paddingX: '24px', paddingY: '16px' }}
+        paddingX="24px"
+        paddingY="16px"
+        sx={(theme) => ({ backgroundColor: theme.palette.secondary.main })}
       >
         <NextLink href="/" className="font-bold text-2xl text-black">
           {LOGO_NAME}
@@ -19,7 +19,7 @@ export default function Planning() {
 
         <AvatarDropdownMenu />
       </Box>
-      <main></main>
+      <Box component="main"></Box>
     </Grid>
   );
 }
