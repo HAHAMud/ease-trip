@@ -9,19 +9,21 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  Grid,
-  EzForm,
-  EzTextField,
   EzCheckbox,
-  EzIconButton,
   EzContainedButton,
-  useToast,
+  EzForm,
+  EzIconButton,
+  EzTextField,
   EzTypography,
+  Grid,
+  useToast,
 } from '@ease-trip/easy-ui';
 import { login } from '@/api/auth';
-import { LOGO_NAME, REGISTER_SLOGAN } from '@/constants';
+import { LOGO_NAME } from '@/constants';
 import { setStorageItem } from '@/utils';
 import { defaultValues, LoginForm, loginSchema } from '../models';
+
+export const registerSlogan = `Don't have an account? Create one?`;
 
 export default function LoginPage() {
   const router = useRouter();
@@ -95,7 +97,7 @@ export default function LoginPage() {
                 />
                 <EzCheckbox name="rememberMe" label="keep me signed in." />
                 <EzTypography variant="body2">
-                  <Link href="/register">{REGISTER_SLOGAN}</Link>
+                  <Link href="/register">{registerSlogan}</Link>
                 </EzTypography>
                 <CardActions>
                   <Grid item ml="auto">
