@@ -16,10 +16,10 @@ import {
   EzIconButton,
   EzContainedButton,
   useToast,
-  Typography,
+  EzTypography,
 } from '@ease-trip/easy-ui';
 import { login } from '@/api/auth';
-import { LOGO_NAME } from '@/constants';
+import { LOGO_NAME, REGISTER_SLOGAN } from '@/constants';
 import { setStorageItem } from '@/utils';
 import { defaultValues, LoginForm, loginSchema } from '../models';
 
@@ -69,9 +69,9 @@ export default function LoginPage() {
           <CardHeader
             component={() => (
               <Link href="/login" onClick={handleTitleClick}>
-                <Typography variant="h5" mt={1} mx={2}>
+                <EzTypography variant="h5" mt={1} mx={2}>
                   {LOGO_NAME}
-                </Typography>
+                </EzTypography>
               </Link>
             )}
           />
@@ -94,6 +94,9 @@ export default function LoginPage() {
                   }
                 />
                 <EzCheckbox name="rememberMe" label="keep me signed in." />
+                <EzTypography variant="body2">
+                  <Link href="/register">{REGISTER_SLOGAN}</Link>
+                </EzTypography>
                 <CardActions>
                   <Grid item ml="auto">
                     <EzContainedButton type="submit">Sign In</EzContainedButton>
