@@ -7,3 +7,4 @@ export * from './checkbox';
 export * from './icon';
 export * from './textfield';
 export * from './toast';
+export * from './typography';
