@@ -14,10 +14,10 @@ export const registerSchema = z.object({
     .max(100, 'At most 100 characters.')
     .regex(/^(?=.*[a-zA-Z])(?=.*\d).+$/, 'At least 1 letter and 1 number.'),
   city: z.string().optional(),
-  serviceAgreement: z.literal(true, {
+  serviceAgreement: z.literal<boolean>(true, {
     errorMap: () => ({ message: 'You must agree to the terms of service.' }),
   }),
-  businessAgreement: z.literal(true, {
+  businessAgreement: z.literal<boolean>(true, {
     errorMap: () => ({ message: 'You must agree to the data collection for commercial purposes.' }),
   }),
 });
