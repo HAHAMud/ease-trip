@@ -8,9 +8,14 @@ const client = createClient({
 });
 
 export async function registerAccount(payload: RegisterFormProps) {
-  const response = await client.post<RegisterResult>('/register', payload);
+  // FIXME: 送出資料渲染 dom 畫面會有問題
+  try {
+    const response = await client.post<RegisterResult>('/register', payload);
 
-  return response.data;
+    return response.data;
+  } catch (error: any) {
+    console.log('🚀 ~ registerAccount ~ error:', error);
+  }
 }
 
 export async function checkEmail(payload: { email: string }) {
