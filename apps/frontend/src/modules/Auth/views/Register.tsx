@@ -44,8 +44,6 @@ export default function RegisterForm() {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (event: ReactMouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
   };
 
   const isSubmitAllow = isEmailCheck && checkServiceAgreement && checkBusinessAgreement;
@@ -83,7 +81,6 @@ export default function RegisterForm() {
                       name={showPassword ? 'VisibilityOff' : 'Visibility'}
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
                     />
                   }
                 />
