@@ -1,4 +1,3 @@
-import type { MouseEvent as ReactMouseEvent } from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
@@ -20,6 +19,7 @@ import { defaultRegisterValues, RegisterFormProps, registerSchema } from '@/modu
 import CheckEmailButton from './CheckEmailButton';
 
 export default function RegisterForm() {
+  const [validate, setValidate] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isEmailCheck, setIsEmailCheck] = useState(false);
   const [checkServiceAgreement, setCheckService] = useState(false);
@@ -39,14 +39,21 @@ export default function RegisterForm() {
   });
 
   const handleSubmit = (data: RegisterFormProps) => {
-    return mutation.mutateAsync(data);
+    // 驗證表單資訊
+    const result = registerSchema.safeParse(data);
+
+    const validateFormData = result.success && isEmailCheck && checkServiceAgreement && checkBusinessAgreement;
+
+    if (!result.success) {
+      toast.error(result.error.message);
+      setValidate(true);
+    } else {
+      validateFormData ? setValidate(false) : setValidate(true);
+      validateFormData ? mutation.mutateAsync(data) : toast.error('信箱重複');
+    }
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  };
-
-  const isSubmitAllow = isEmailCheck && checkServiceAgreement && checkBusinessAgreement;
 
   return (
     <Grid
@@ -101,7 +108,7 @@ export default function RegisterForm() {
                 />
                 <CardActions>
                   <Grid item ml="auto">
-                    <EzContainedButton disabled={!isSubmitAllow} type="submit">
+                    <EzContainedButton disabled={validate} type="submit">
                       submit
                     </EzContainedButton>
                   </Grid>
