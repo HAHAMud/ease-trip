@@ -19,13 +19,6 @@ export const createClient = (config: AxiosRequestConfig) => {
   });
 
   client.interceptors.request.use((request) => {
-    const token = getStorageItem('ez-token');
-
-    // Add token to request headers, avoiding empty token
-    if (!!token?.trim()) {
-      request.headers.Authorization = `Bearer ${token}`;
-    }
-
     return request;
   });
 
@@ -42,7 +35,7 @@ export const createClient = (config: AxiosRequestConfig) => {
 
       try {
         return Promise.reject(error);
-      } catch (err) {}
+      } catch (err) { }
 
       return Promise.reject(error);
     }
