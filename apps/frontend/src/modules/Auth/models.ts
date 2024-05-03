@@ -10,8 +10,8 @@ export const registerSchema = z.object({
   email: z.string().email(),
   password: z
     .string()
-    .min(6, 'At least 6 digits.')
-    .max(100, 'At most 100 digits.')
+    .min(6, 'At least 6 characters.')
+    .max(100, 'At most 100 characters.')
     .regex(/^(?=.*[a-zA-Z])(?=.*\d).+$/, 'At least 1 letter and 1 number.'),
   city: z.string().optional(),
   serviceAgreement: z.boolean(),
