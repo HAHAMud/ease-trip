@@ -24,6 +24,7 @@ export default function RegisterForm() {
   const [isEmailCheck, setIsEmailCheck] = useState(false);
   const [checkServiceAgreement, setCheckService] = useState(false);
   const [checkBusinessAgreement, setBusinessService] = useState(false);
+  const [city, setCity] = useState('');
 
   const toast = useToast();
   const router = useRouter();
@@ -86,7 +87,7 @@ export default function RegisterForm() {
                     />
                   }
                 />
-                <EzTextField fullWidth name="city" label="city(option)" type="text" />
+                <EzTextField fullWidth name="city" label="city(option)" type="text" onChange={setCity} />
                 <EzCheckbox
                   name="serviceAgreement"
                   label="同意服務條款"
