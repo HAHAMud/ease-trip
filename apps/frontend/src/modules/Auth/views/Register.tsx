@@ -38,6 +38,10 @@ export default function RegisterForm() {
     },
   });
 
+  const onCityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(event.target.value);
+  };
+
   const handleSubmit = (data: RegisterFormProps) => {
     // 驗證表單資訊
     const result = registerSchema.safeParse(data);
@@ -91,7 +95,7 @@ export default function RegisterForm() {
                     />
                   }
                 />
-                <EzTextField fullWidth name="city" label="city(option)" type="text" onChange={setCity} />
+                <EzTextField fullWidth name="city" label="city(option)" type="text" onChange={onCityChange} />
                 <EzCheckbox
                   name="serviceAgreement"
                   label="同意服務條款"
