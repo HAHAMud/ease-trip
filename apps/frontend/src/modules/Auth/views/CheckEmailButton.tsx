@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { EzIconButton, useFormContext, useToast } from '@ease-trip/easy-ui';
-import { checkEmail } from '@/api/auth';
+import { checkEmail } from '../apis';
 import { LoginForm } from '../models';
 
 interface CheckEmailButtonProps {

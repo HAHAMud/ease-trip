@@ -18,8 +18,8 @@ import {
   Grid,
   useToast,
 } from '@ease-trip/easy-ui';
-import { login } from '@/api/auth';
 import { LOGO_NAME } from '@/constants';
+import { login } from '../apis';
 import { defaultValues, LoginForm, loginSchema } from '../models';
 
 export const registerSlogan = `Don't have an account? Create one?`;
