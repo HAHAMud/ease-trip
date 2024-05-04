@@ -15,8 +15,8 @@ import {
   EzContainedButton,
   useToast,
 } from '@ease-trip/easy-ui';
-import { registerAccount } from '@/api/auth';
 import { defaultRegisterValues, RegisterFormProps, registerSchema } from '@/modules/Auth/models';
+import { registerAccount } from '../apis';
 import CheckEmailButton from './CheckEmailButton';
 
 export default function RegisterForm() {
