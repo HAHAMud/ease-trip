@@ -20,7 +20,6 @@ import {
 } from '@ease-trip/easy-ui';
 import { login } from '@/api/auth';
 import { LOGO_NAME } from '@/constants';
-import { setStorageItem } from '@/utils';
 import { defaultValues, LoginForm, loginSchema } from '../models';
 
 export const registerSlogan = `Don't have an account? Create one?`;
@@ -32,7 +31,6 @@ export default function LoginPage() {
     mutationFn: login,
     onSuccess: (data) => {
       console.log('🚀 ~ LoginPage ~ data:', data);
-      setStorageItem('ez-token', data.token);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

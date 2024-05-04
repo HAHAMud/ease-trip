@@ -1,4 +1,4 @@
-import { createClient } from '../../libs/http/client';
+import { createClient } from '@/libs/http/client';
 
 type User = {
   name: string;
