@@ -63,7 +63,7 @@ function FormContent() {
   );
 }
 
-export default function RegisterForm() {
+export default function Register() {
   const toast = useToast();
   const router = useRouter();
 
