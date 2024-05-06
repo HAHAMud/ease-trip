@@ -1,13 +1,28 @@
-import { authorizationMiddleware } from './authorization';
-import { Middleware, middlewareController } from './utils';
+import { authGuardPages, authRouterCheck } from './authorization';
+import { HeaderKey } from './constants';
+import { cond, Middleware, middlewareController } from './utils';
 
 export const middlewares: Middleware[] = [
   [
-    (req) => new RegExp('/((?!api|_next/static|_next/image|favicon.ico).*)').test(req.url),
-    () => middlewareController.next(),
+    (request) => /^\/api/.test(new URL(request.url).pathname),
+    (request) => {
+      const token = request.cookies.get('token')?.value || '';
+      return middlewareController.next({
+        headers: {
+          [HeaderKey.AUTHORIZATION]: `Bearer ${token}`,
+        },
+      });
+    },
   ],
-  [(req) => req.headers.has('next-router-prefetch'), () => middlewareController.next()],
-  [(req) => req.headers.get('purpose') === 'prefetch', () => middlewareController.next()],
-  authorizationMiddleware(),
+  [(request) => request.headers.has('next-router-prefetch'), () => middlewareController.next()],
+  [(request) => request.headers.get('purpose') === 'prefetch', () => middlewareController.next()],
+  [
+    (request) => {
+      return authGuardPages.some((path) => request.nextUrl.pathname === path);
+    },
+    authRouterCheck,
+  ],
   [() => true, () => middlewareController.next()],
 ];
+
+export const middlewareHandler = cond(middlewares);

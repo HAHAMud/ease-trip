@@ -19,7 +19,7 @@ import {
   useToast,
 } from '@ease-trip/easy-ui';
 import { LOGO_NAME } from '@/constants';
-import { login } from '../apis';
+import { clientLogin as login } from '../apis';
 import { defaultValues, LoginForm, loginSchema } from '../models';
 
 export const registerSlogan = `Don't have an account? Create one?`;

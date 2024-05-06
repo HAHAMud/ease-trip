@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { getStorageItem } from '@/utils';
 
 const apiServer = process.env.NEXT_PUBLIC_SERVER_API ?? '';
 
@@ -19,13 +18,6 @@ export const createClient = (config: AxiosRequestConfig) => {
   });
 
   client.interceptors.request.use((request) => {
-    const token = getStorageItem('ez-token');
-
-    // Add token to request headers, avoiding empty token
-    if (!!token?.trim()) {
-      request.headers.Authorization = `Bearer ${token}`;
-    }
-
     return request;
   });
 
@@ -51,4 +43,6 @@ export const createClient = (config: AxiosRequestConfig) => {
   return client;
 };
 
-export const createQueryKey = <T extends { [K in keyof T]: K }>(obj: T) => obj;
+export const client = createClient({
+  baseURL: '/api',
+});
