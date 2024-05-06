@@ -1,5 +1,5 @@
 import { createClient } from '@/libs/http/client';
-import { RegisterFormProps } from '@/modules/Auth/models';
+import { RegisterForm } from '@/modules/Auth/models';
 
 type RegisterResult = { email: string; password: string; name: string; token: string };
 
@@ -7,7 +7,7 @@ const client = createClient({
   baseURL: '/api/auth',
 });
 
-export async function registerAccount(payload: RegisterFormProps) {
+export async function registerAccount(payload: RegisterForm) {
   // FIXME: 送出資料渲染 dom 畫面會有問題
   try {
     const response = await client.post<RegisterResult>('/register', payload);

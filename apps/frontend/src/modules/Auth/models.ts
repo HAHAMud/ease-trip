@@ -20,11 +20,12 @@ export const registerSchema = z.object({
   businessAgreement: z.literal<boolean>(true, {
     errorMap: () => ({ message: 'You must agree to the data collection for commercial purposes.' }),
   }),
+  emailChecked: z.boolean(),
 });
 
 export type LoginForm = z.infer<typeof loginSchema>;
 
-export type RegisterFormProps = z.infer<typeof registerSchema>;
+export type RegisterForm = z.infer<typeof registerSchema>;
 
 export const defaultValues = {
   email: '',
@@ -38,4 +39,5 @@ export const defaultRegisterValues = {
   city: undefined,
   serviceAgreement: false,
   businessAgreement: false,
-} satisfies RegisterFormProps;
+  emailChecked: false,
+} satisfies RegisterForm;

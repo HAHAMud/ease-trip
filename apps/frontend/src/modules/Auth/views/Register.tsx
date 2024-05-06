@@ -13,16 +13,14 @@ import {
   EzIconButton,
   EzContainedButton,
   useToast,
+  useFormContext,
 } from '@ease-trip/easy-ui';
 import { registerAccount } from '@/api/auth';
-import { defaultRegisterValues, RegisterFormProps, registerSchema } from '@/modules/Auth/models';
+import { defaultRegisterValues, RegisterForm, registerSchema } from '@/modules/Auth/models';
 import CheckEmailButton from './CheckEmailButton';
 
-type Props = {
-  isEmailCheck: boolean;
-  onChangeEmailCheck: (isCheck: boolean) => void;
-};
-function FormContent({ isEmailCheck, onChangeEmailCheck }: Props) {
+function FormContent() {
+  const { setValue } = useFormContext<RegisterForm>();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -33,9 +31,9 @@ function FormContent({ isEmailCheck, onChangeEmailCheck }: Props) {
         fullWidth
         name="email"
         label="Email"
-        endAdornment={<CheckEmailButton isCheck={isEmailCheck} onChange={onChangeEmailCheck} />}
+        endAdornment={<CheckEmailButton />}
         onInput={() => {
-          onChangeEmailCheck(false);
+          setValue('emailChecked', false);
         }}
       />
 
@@ -66,8 +64,6 @@ function FormContent({ isEmailCheck, onChangeEmailCheck }: Props) {
 }
 
 export default function RegisterForm() {
-  const [isEmailCheck, setIsEmailCheck] = useState(false);
-
   const toast = useToast();
   const router = useRouter();
 
@@ -81,11 +77,9 @@ export default function RegisterForm() {
     },
   });
 
-  const onChangeEmailCheck = (isCheck: boolean) => {
-    setIsEmailCheck(isCheck);
-  };
+  const handleSubmit = async (data: RegisterForm) => {
+    // TODO: data.emailChecked
 
-  const handleSubmit = async (data: RegisterFormProps) => {
     return mutation.mutateAsync(data);
   };
 
@@ -103,7 +97,7 @@ export default function RegisterForm() {
           <CardContent>
             <Grid rowSpacing={2}>
               <EzForm defaultValues={defaultRegisterValues} schema={registerSchema} onSubmit={handleSubmit}>
-                <FormContent isEmailCheck={isEmailCheck} onChangeEmailCheck={onChangeEmailCheck} />
+                <FormContent />
               </EzForm>
             </Grid>
           </CardContent>

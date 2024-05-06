@@ -1,22 +1,19 @@
 import { useMutation } from '@tanstack/react-query';
 import { EzIconButton, useFormContext, useToast } from '@ease-trip/easy-ui';
 import { checkEmail } from '@/api/auth';
-import { RegisterFormProps } from '../models';
+import { RegisterForm } from '../models';
 
-interface CheckEmailButtonProps {
-  isCheck: boolean;
-  onChange: (isExisting: boolean) => void;
-}
+export default function CheckEmailButton() {
+  const { getValues, setValue, watch } = useFormContext<RegisterForm>();
+  const emailChecked = watch('emailChecked');
 
-export default function CheckEmailButton({ isCheck, onChange }: CheckEmailButtonProps) {
-  const { getValues } = useFormContext<RegisterFormProps>();
   const toast = useToast();
 
   const mutation = useMutation({
     mutationFn: checkEmail,
     onSuccess: ({ isExisting }) => {
-      onChange(!isExisting);
       if (isExisting) {
+        setValue('emailChecked', true);
         toast.error('The email address is registered. Please check the email address again.');
       }
     },
@@ -24,8 +21,8 @@ export default function CheckEmailButton({ isCheck, onChange }: CheckEmailButton
 
   return (
     <EzIconButton
-      className={isCheck ? 'text-green-500' : ''}
-      name={isCheck ? 'CheckCircleOutline' : 'LiveHelp'}
+      className={emailChecked ? 'text-green-500' : ''}
+      name={emailChecked ? 'CheckCircleOutline' : 'LiveHelp'}
       onClick={() => {
         const email = getValues('email');
         mutation.mutateAsync({ email });
