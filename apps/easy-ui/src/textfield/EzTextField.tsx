@@ -15,8 +15,17 @@ const StyledTextField = styled(TextField)<EzTextFieldProps>(() => ({
 }));
 
 export function EzTextField(props: EzTextFieldProps) {
-  const { control, name, rules, defaultValue, shouldUnregister, startAdornment, endAdornment, ...componentProps } =
-    props;
+  const {
+    control,
+    name,
+    rules,
+    defaultValue,
+    shouldUnregister,
+    startAdornment,
+    endAdornment,
+    helperText,
+    ...componentProps
+  } = props;
   const controllerParams = { control, name, rules, defaultValue, shouldUnregister };
   const { fieldState } = useController(controllerParams);
 
@@ -34,7 +43,7 @@ export function EzTextField(props: EzTextFieldProps) {
           disabled={context?.formState.isSubmitting}
           margin={margin}
           variant={variant}
-          helperText={fieldState.error?.message ?? ''}
+          helperText={helperText ?? fieldState.error?.message ?? ''}
           error={Boolean(fieldState.error)}
           InputProps={{
             ...(startAdornment && {

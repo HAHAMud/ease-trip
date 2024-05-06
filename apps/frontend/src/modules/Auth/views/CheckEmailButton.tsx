@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { EzIconButton, useFormContext, useToast } from '@ease-trip/easy-ui';
 import { checkEmail } from '@/api/auth';
-import { LoginForm } from '../models';
+import { RegisterFormProps } from '../models';
 
 interface CheckEmailButtonProps {
   isCheck: boolean;
@@ -9,7 +9,7 @@ interface CheckEmailButtonProps {
 }
 
 export default function CheckEmailButton({ isCheck, onChange }: CheckEmailButtonProps) {
-  const methods = useFormContext<LoginForm>();
+  const { getValues } = useFormContext<RegisterFormProps>();
   const toast = useToast();
 
   const mutation = useMutation({
@@ -27,7 +27,7 @@ export default function CheckEmailButton({ isCheck, onChange }: CheckEmailButton
       className={isCheck ? 'text-green-500' : ''}
       name={isCheck ? 'CheckCircleOutline' : 'LiveHelp'}
       onClick={() => {
-        const email = methods.getValues('email');
+        const email = getValues('email');
         mutation.mutateAsync({ email });
       }}
     />
