@@ -1,10 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { middlewares } from './middlewares';
-import { cond } from './middlewares/utils';
-
-const getResponse = cond(middlewares);
+import { middlewareHandler } from './middlewares';
 
 export function middleware(request: NextRequest) {
-  return getResponse(request) ?? NextResponse.next();
+  return middlewareHandler(request) ?? NextResponse.next();
 }
